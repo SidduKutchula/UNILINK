@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Auth UI Fix</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background:linear-gradient( rgb(122, 120, 120),rgb(196, 195, 195))
+    }
+    .form-container {
+      background: white;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+    }
+    .tab-active {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+    }
+    .tab-inactive {
+      background: rgba(102, 126, 234, 0.1);
+      color: #667eea;
+    }
+    .form-slide {
+      transition: all 0.5s ease;
+    }
+    .hidden-form {
+      display: none;
+    }
+    .input-field {
+      border: 2px solid #e5e7eb;
+      transition: 0.3s;
+    }
+    .input-field:focus {
+      border-color: #667eea;
+      box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.3);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      transition: 0.3s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+    }
+    .error-message {
+      font-size: 0.8rem;
+      color: #ef4444;
+      display: none;
+    }
+    .error-visible {
+      display: block;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+  <div class="form-container w-full max-w-md rounded-2xl p-8">
+    <div class="flex mb-6 bg-gray-100 rounded-xl p-1">
+      <button id="loginTab" class="tab-active flex-1 py-3 rounded-lg font-medium text-sm">Login</button>
+      <button id="signupTab" class="tab-inactive flex-1 py-3 rounded-lg font-medium text-sm">Sign Up</button>
+    </div>
+
+    <!-- Login Form -->
+    <div id="loginForm" class="form-slide">
+      <h2 class="text-2xl font-bold text-gray-800 mb-1 text-center">Welcome Back</h2>
+      <p class="text-center text-gray-600 mb-6 text-sm">Please sign in to your account</p>
+      <form id="loginFormElement" class="space-y-4">
+        <div>
+          <label class="block text-sm mb-1 font-medium text-gray-700">Email</label>
+          <input type="email" id="loginEmail" class="input-field w-full px-4 py-3 rounded-xl outline-none" placeholder="Enter your email">
+          <div id="loginEmailError" class="error-message">Invalid email</div>
+        </div>
+        <div>
+          <label class="block text-sm mb-1 font-medium text-gray-700">Password</label>
+          <input type="password" id="loginPassword" class="input-field w-full px-4 py-3 rounded-xl outline-none" placeholder="Password">
+          <div id="loginPasswordError" class="error-message">Password too short</div>
+        </div>
+        <button type="submit" class="btn-primary w-full py-3 rounded-xl">Sign In</button>
+      </form>
+    </div>
+
+    <!-- Signup Form -->
+    <div id="signupForm" class="form-slide hidden-form">
+      <h2 class="text-2xl font-bold text-gray-800 mb-1 text-center">Create Account</h2>
+      <p class="text-center text-gray-600 mb-6 text-sm">Join us today</p>
+      <form id="signupFormElement" class="space-y-4">
+        <div>
+          <label class="block text-sm mb-1 font-medium text-gray-700">Name</label>
+          <input type="text" id="signupName" class="input-field w-full px-4 py-3 rounded-xl outline-none" placeholder="Your name">
+          <div id="signupNameError" class="error-message">Name required</div>
+        </div>
+        <div>
+          <label class="block text-sm mb-1 font-medium text-gray-700">Email</label>
+          <input type="email" id="signupEmail" class="input-field w-full px-4 py-3 rounded-xl outline-none" placeholder="Your email">
+          <div id="signupEmailError" class="error-message">Invalid email</div>
+        </div>
+        <div>
+          <label class="block text-sm mb-1 font-medium text-gray-700">Password</label>
+          <input type="password" id="signupPassword" class="input-field w-full px-4 py-3 rounded-xl outline-none" placeholder="Password">
+          <div id="signupPasswordError" class="error-message">Too short</div>
+        </div>
+        <div>
+          <label class="block text-sm mb-1 font-medium text-gray-700">Confirm</label>
+          <input type="password" id="confirmPassword" class="input-field w-full px-4 py-3 rounded-xl outline-none" placeholder="Confirm password">
+          <div id="confirmPasswordError" class="error-message">Does not match</div>
+        </div>
+        <button type="submit" class="btn-primary w-full py-3 rounded-xl">Create Account</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const loginTab = document.getElementById('loginTab');
+    const signupTab = document.getElementById('signupTab');
+    const loginForm = document.getElementById('loginForm');
+    const signupForm = document.getElementById('signupForm');
+
+    loginTab.onclick = () => {
+      loginTab.className = 'tab-active flex-1 py-3 rounded-lg font-medium text-sm';
+      signupTab.className = 'tab-inactive flex-1 py-3 rounded-lg font-medium text-sm';
+      loginForm.classList.remove('hidden-form');
+      signupForm.classList.add('hidden-form');
+    };
+
+    signupTab.onclick = () => {
+      signupTab.className = 'tab-active flex-1 py-3 rounded-lg font-medium text-sm';
+      loginTab.className = 'tab-inactive flex-1 py-3 rounded-lg font-medium text-sm';
+      signupForm.classList.remove('hidden-form');
+      loginForm.classList.add('hidden-form');
+    };
+  </script>
+</body>
+</html>

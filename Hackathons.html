@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackathons & Competitions</title>
+    <link rel="stylesheet" href="Hackathons.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="title">Hackathons & Competitions</h1>
+            <p class="subtitle">Participate in live coding competitions and hackathons from top platforms</p>
+        </header>
+
+        <!-- Live Events -->
+        <section class="section">
+            <h2 class="section-title">
+                <i data-lucide="zap" class="icon live-icon"></i>
+                Live Events
+                <span class="live-badge">LIVE</span>
+                </h2>
+            
+            <div class="live-events-grid">
+                <div class="card live-card">
+                    <div class="card-header">
+                        <div class="event-header">
+                            <div>
+                                <h3 class="event-title">
+                                    <div class="live-dot"></div>
+                                    AI Innovation Challenge
+                                </h3>
+                                <p class="event-platform">
+                                    <i data-lucide="code" class="small-icon"></i>
+                                    HackerRank
+                                </p>
+                            </div>
+                            <span class="difficulty-badge advanced">Advanced</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <p class="event-description">Build innovative AI solutions for real-world problems</p>
+                        
+                        <div class="event-stats">
+                            <div class="stat">
+                                <i data-lucide="users" class="small-icon"></i>
+                                1,247 participants
+                            </div>
+                            <div class="stat">
+                                <i data-lucide="dollar-sign" class="small-icon"></i>
+                                $10,000 prize
+                            </div>
+                            <div class="stat">
+                                <i data-lucide="timer" class="small-icon"></i>
+                                2 days 14 hours left
+                            </div>
+                            <div class="stat live-now">
+                                <i data-lucide="zap" class="small-icon"></i>
+                                Live Now
+                            </div>
+                        </div>
+
+                        <div class="button-group">
+                            <button class="btn btn-primary">
+                                <i data-lucide="external-link" class="small-icon"></i>
+                                Join Now
+                            </button>
+                            <button class="btn btn-outline">
+                                <i data-lucide="bell" class="small-icon"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card live-card">
+                    <div class="card-header">
+                        <div class="event-header">
+                            <div>
+                                <h3 class="event-title">
+                                    <div class="live-dot"></div>
+                                    Web3 Developer Contest
+                                </h3>
+                                <p class="event-platform">
+                                    <i data-lucide="code" class="small-icon"></i>
+                                    CodeChef
+                                </p>
+                            </div>
+                            <span class="difficulty-badge intermediate">Intermediate</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <p class="event-description">Create decentralized applications using blockchain technology</p>
+                        
+                        <div class="event-stats">
+                            <div class="stat">
+                                <i data-lucide="users" class="small-icon"></i>
+                                892 participants
+                            </div>
+                            <div class="stat">
+                                <i data-lucide="dollar-sign" class="small-icon"></i>
+                                $5,000 prize
+                            </div>
+                            <div class="stat">
+                                <i data-lucide="timer" class="small-icon"></i>
+                                18 hours left
+                            </div>
+                            <div class="stat live-now">
+                                <i data-lucide="zap" class="small-icon"></i>
+                                Live Now
+                            </div>
+                        </div>
+
+                        <div class="button-group">
+                            <button class="btn btn-primary">
+                                <i data-lucide="external-link" class="small-icon"></i>
+                                Join Now
+                            </button>
+                            <button class="btn btn-outline">
+                                <i data-lucide="bell" class="small-icon"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <h2 class="section-title">
+                <i data-lucide="calendar" class="icon upcoming-icon"></i>
+                Upcoming Events
+            </h2>
+            
+            <!-- Countdown Timer -->
+            <div class="card countdown-card">
+                <div class="card-header">
+                    <h3 class="countdown-title">Next Event: Mobile App Hackathon</h3>
+                    <p class="countdown-subtitle">Starting in:</p>
+                </div>
+                <div class="card-content">
+                    <div class="countdown-timer">
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="days">5</div>
+                            <div class="countdown-label">Days</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="hours">12</div>
+                            <div class="countdown-label">Hours</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="minutes">34</div>
+                            <div class="countdown-label">Minutes</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="seconds">56</div>
+                            <div class="countdown-label">Seconds</div>
+                        </div>
+                    </div>
+                    <div class="countdown-button">
+                        <button class="btn btn-primary btn-large">
+                            <i data-lucide="bell" class="small-icon"></i>
+                            Set Reminder
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="upcoming-events-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="event-header">
+                            <div>
+                                <h3 class="event-title">Mobile App Hackathon</h3>
+                                <p class="event-platform">
+                                    <i data-lucide="code" class="small-icon"></i>
+                                    GFG
+                                </p>
+                            </div>
+                            <span class="difficulty-badge beginner">Beginner</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <p class="event-description">Develop innovative mobile applications for social impact</p>
+                        
+                        <div class="event-details">
+                            <div class="detail">
+                                <i data-lucide="calendar" class="small-icon"></i>
+                                Starts: Feb 15, 2024
+                            </div>
+                            <div class="detail">
+                                <i data-lucide="clock" class="small-icon"></i>
+                                Duration: 48 hours
+                            </div>
+                            <div class="detail">
+                                <i data-lucide="dollar-sign" class="small-icon"></i>
+                                Prize: $3,000
+                            </div>
+                        </div>
+                        <div class="progress-section">
+                            <div class="progress-info">
+                                <span>Registrations</span>
+                                <span>456/1000</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 45.6%"></div>
+                            </div>
+                        </div>
+
+                        <div class="button-group">
+                            <button class="btn btn-primary">Register</button>
+                            <button class="btn btn-outline">
+                                <i data-lucide="bell" class="small-icon"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="event-header">
+                            <div>
+                                <h3 class="event-title">Data Science Competition</h3>
+                                <p class="event-platform">
+                                    <i data-lucide="code" class="small-icon"></i>
+                                    LeetCode
+                                </p>
+                            </div>
+                            <span class="difficulty-badge advanced">Advanced</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <p class="event-description">Solve complex data science challenges using machine learning</p>
+                        
+                        <div class="event-details">
+                            <div class="detail">
+                                <i data-lucide="calendar" class="small-icon"></i>
+                                Starts: Feb 20, 2024
+                            </div>
+                            <div class="detail">
+                                <i data-lucide="clock" class="small-icon"></i>
+                                Duration: 72 hours
+                            </div>
+                            <div class="detail">
+                                <i data-lucide="dollar-sign" class="small-icon"></i>
+                                Prize: $15,000
+                            </div>
+                        </div>
+                        <div class="progress-section">
+                            <div class="progress-info">
+                                <span>Registrations</span>
+                                <span>789/1500</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 52.6%"></div>
+                            </div>
+                        </div>
+
+                        <div class="button-group">
+                            <button class="btn btn-primary">Register</button>
+                            <button class="btn btn-outline">
+                                <i data-lucide="bell" class="small-icon"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="event-header">
+                            <div>
+                                <h3 class="event-title">Cybersecurity CTF</h3>
+                                <p class="event-platform">
+                                    <i data-lucide="code" class="small-icon"></i>
+                                    HackerRank
+                                </p>
+                            </div>
+                            <span class="difficulty-badge expert">Expert</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <p class="event-description">Test your ethical hacking skills in this intense capture the flag challenge</p>
+                        
+                        <div class="event-details">
+                            <div class="detail">
+                                <i data-lucide="calendar" class="small-icon"></i>
+                                Starts: Feb 25, 2024
+                            </div>
+                            <div class="detail">
+                                <i data-lucide="clock" class="small-icon"></i>
+                                Duration: 24 hours
+                            </div>
+                            <div class="detail">
+                                <i data-lucide="dollar-sign" class="small-icon"></i>
+                                Prize: $8,000
+                            </div>
+                        </div>
+                        <div class="progress-section">
+                            <div class="progress-info">
+                                <span>Registrations</span>
+                                <span>234/500</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 46.8%"></div>
+                            </div>
+                        </div>
+
+                        <div class="button-group">
+                            <button class="btn btn-primary">Register</button>
+                            <button class="btn btn-outline">
+                                <i data-lucide="bell" class="small-icon"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <h2 class="section-title">
+                <i data-lucide="trophy" class="icon trophy-icon"></i>
+                Past Events & Winners
+            </h2>
+            
+            <div class="past-events-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="event-header">
+                            <h3 class="event-title">Frontend Masters Challenge</h3>
+                            <span class="status-badge">COMPLETED</span>
+                        </div>
+                        <p class="event-platform">CodeChef • Jan 20, 2024</p>
+                    </div>
+                    <div class="card-content">
+                        <div class="participants-info">
+                            <i data-lucide="users" class="small-icon"></i>
+                            2,145 participants
+                        </div>
+                        
+                        <h4 class="winners-title">
+                            <i data-lucide="award" class="small-icon"></i>
+                            Winners
+                        </h4>
+                        <div class="winners-list">
+                            <div class="winner">
+                                <div class="winner-rank rank-1">1</div>
+                                <div class="winner-avatar">A</div>
+                                <div class="winner-info">
+                                    <div class="winner-name">Alex Chen</div>
+                                    <div class="winner-university">MIT</div>
+                                </div>
+                                <span class="winner-prize">$5,000</span>
+                            </div>
+                            <div class="winner">
+                                <div class="winner-rank rank-2">2</div>
+                                <div class="winner-avatar">S</div>
+                                <div class="winner-info">
+                                    <div class="winner-name">Sarah Kim</div>
+                                    <div class="winner-university">Stanford</div>
+                                </div>
+                                <span class="winner-prize">$3,000</span>
+                            </div>
+                            <div class="winner">
+                                <div class="winner-rank rank-3">3</div>
+                                <div class="winner-avatar">D</div>
+                                <div class="winner-info">
+                                    <div class="winner-name">David Wilson</div>
+                                    <div class="winner-university">Berkeley</div>
+                                </div>
+                                <span class="winner-prize">$2,000</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline full-width">
+                            <i data-lucide="external-link" class="small-icon"></i>
+                            View Results
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="event-header">
+                            <h3 class="event-title">Algorithm Sprint</h3>
+                            <span class="status-badge">COMPLETED</span>
+                        </div>
+                        <p class="event-platform">LeetCode • Jan 15, 2024</p>
+                    </div>
+                    <div class="card-content">
+                        <div class="participants-info">
+                            <i data-lucide="users" class="small-icon"></i>
+                            1,876 participants
+                        </div>
+                        <h4 class="winners-title">
+                            <i data-lucide="award" class="small-icon"></i>
+                            Winners
+                        </h4>
+                        <div class="winners-list">
+                            <div class="winner">
+                                <div class="winner-rank rank-1">1</div>
+                                <div class="winner-avatar">E</div>
+                                <div class="winner-info">
+                                    <div class="winner-name">Emma Rodriguez</div>
+                                    <div class="winner-university">Caltech</div>
+                                </div>
+                                <span class="winner-prize">$4,000</span>
+                            </div>
+                            <div class="winner">
+                                <div class="winner-rank rank-2">2</div>
+                                <div class="winner-avatar">M</div>
+                                <div class="winner-info">
+                                    <div class="winner-name">Michael Zhang</div>
+                                    <div class="winner-university">CMU</div>
+                                </div>
+                                <span class="winner-prize">$2,500</span>
+                            </div>
+                            <div class="winner">
+                                <div class="winner-rank rank-3">3</div>
+                                <div class="winner-avatar">L</div>
+                                <div class="winner-info">
+                                    <div class="winner-name">Lisa Patel</div>
+                                    <div class="winner-university">Georgia Tech</div>
+                                </div>
+                                <span class="winner-prize">$1,500</span>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-outline full-width">
+                            <i data-lucide="external-link" class="small-icon"></i>
+                            View Results
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="hackathons.js"></script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+body {
+  color: #fff;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #3b82f6;
+}
+
+nav .nav-btn {
+  background: transparent;
+  color: black;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  margin-left: 1rem;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+}
+nav .nav-btn:hover{
+  background-color: #f59754;
+  border-radius: 10px;
+}
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px);
+}
+
+.form-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+  border: 2px solid rgb(213, 211, 211);
+}
+
+.form-container h2 {
+  margin-top: 0;
+  color: black;
+}
+
+.form-container p {
+  margin-bottom: 1rem;
+  color: grey;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin: 0.5rem 0 0.2rem;
+  color: black;
+  margin-bottom: 10px;
+}
+
+input,
+select {
+  padding: 0.6rem;
+  border: 1px solid rgb(242, 240, 240);
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  color: grey;
+  transition: border 0.2s ease;
+  outline: none;
+}
+
+input:focus,
+select:focus {
+  border: 2px solid #3b82f6;
+}
+
+.primary-btn {
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  padding: 0.7rem;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 1rem 0;
+}
+.primary-btn:hover{
+    background-color: #639cf8;
+}
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.or {
+  text-align: center;
+  margin: 1rem 0;
+  font-size: 0.8rem;
+  color:grey;
+  /* font-weight: bold; */
+}
+.or {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: grey;
+  font-weight: bold;
+  font-size: 0.8rem;
+  margin: 1rem 0;
+}
+
+.or::before,
+.or::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #999;
+}
+.or::before {
+  margin-right: 10px;
+}
+
+.or::after {
+  margin-left: 10px;
+}
+.social-login {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+
+.social-login button {
+  border: 1px solid rgb(242, 240, 240);
+  color: black;
+  padding: 0.5rem 2rem;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight:bold;
+}
+.social-login button:hover{
+    background-color: #f59754
+}
+.social-login img{
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+  vertical-align: middle;
+  font-weight:bold;
+}
+.switch {
+  text-align: center;
+  font-size: 1rem;
+}
+
+a {
+  color: #3b82f6;
+  text-decoration: none;
+}

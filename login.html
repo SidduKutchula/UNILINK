@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Modern Auth UI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <!-- Font Awesome for eye icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            overflow: hidden; /* Hide scrollbars if content is within viewport */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Ensure body takes full viewport height */
+            position: relative;
+            background: linear-gradient(rgb(214, 214, 214), rgb(244, 242, 242)); /* Fallback background */
+        }
+
+        /* Video Background Styles */
+        .video-background {
+            position: fixed; /* Fixes the video to the viewport */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1; /* Puts the video behind other content */
+        }
+
+        .video-background video {
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Centers the video */
+            object-fit: cover; /* Ensures the video covers the entire area without distortion */
+        }
+
+        /* Optional: Add an overlay to make the login box more readable */
+        .video-background::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Dark semi-transparent overlay */
+            z-index: 0;
+        }
+
+        .form-container {
+            background: rgba(254, 254, 254, 0.696);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            position: relative; /* To be above the video */
+            z-index: 1; /* Ensures form is on top of the video and overlay */
+            width: 100%;
+            max-width: 400px; /* Limit max width for larger screens */
+            border-radius: 2rem; /* Added rounded corners for the form container */
+            padding: 2rem; /* Added padding for the form container */
+        }
+        .tab-active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        .tab-inactive {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+        }
+        .form-slide {
+            transition: all 0.5s ease;
+        }
+        .form-hidden {
+            display: none;
+        }
+        .input-field {
+            border: 1px solid #ebebebd3;
+            transition: 0.3s;
+            border-radius: 0.75rem; /* Added rounded corners for input fields */
+        }
+        .input-field:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 2px rgba(102, 126, 234, 1);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #5161aeec);
+            color: white;
+            transition: 0.3s;
+            border-radius: 0.75rem; /* Added rounded corners for buttons */
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        .error-message {
+            font-size: 0.8rem;
+            color: #ef4444;
+            display: none;
+        }
+        .error-visible {
+            display: block;
+        }
+        .nav-link {
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .nav-link a {
+            color: #667eea;
+            font-weight: 500;
+        }
+        .nav-link a:hover {
+            text-decoration: underline;
+        }
+        /* Message box styles */
+        .message-box {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .message-box.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <!-- This is the container for your video background -->
+    <div class="video-background">
+        <!-- The <video> tag is where your video file is referenced -->
+        <video autoplay muted loop playsinline id="myVideo">
+            <!-- The <source> tag points to your video file. -->
+            <!-- This path is set to your uploaded video file. -->
+            <source src="Ultra-realistic cinematic animation of a futuristic AI workspace inside a high-tech city apartment at night, glowing holographic interfaces floating in the air, smooth camera pan with gentle zoom, blue and purp (1).mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div class="form-container w-full max-w-md rounded-2xl p-8">
+        <div class="flex mb-6 bg-gray-100 rounded-xl p-1">
+            <button id="loginTab" class="tab-active flex-1 py-3 rounded-lg font-medium text-sm">Login</button>
+            <button id="signupTab" class="tab-inactive flex-1 py-3 rounded-lg font-medium text-sm">Sign Up</button>
+        </div>
+
+        <!-- Login Form -->
+        <div id="loginForm" class="form-slide">
+            <h2 class="text-2xl font-bold text-gray-800 mb-1 text-center">Welcome Back</h2>
+            <p class="text-center text-gray-600 mb-6 text-sm">Please sign in to your account</p>
+            <form id="loginFormElement" class="space-y-4">
+                <div>
+                    <label class="block text-sm mb-1 font-medium text-gray-700">Email</label>
+                    <input type="email" id="loginEmail" class="input-field w-full px-4 py-3 rounded-xl outline-none" placeholder="Enter your email">
+                    <div id="loginEmailError" class="error-message">Invalid email</div>
+                </div>
+                <div>
+                    <label class="block text-sm mb-1 font-medium text-gray-700">Password</label>
+                    <div class="relative">
+                        <input type="password" id="loginPassword" class="input-field w-full px-4 py-3 pr-12 rounded-xl outline-none" placeholder="Password">
+                        <button type="button" onclick="togglePassword('loginPassword', 'toggleIcon')" class="absolute inset-y-0 right-4 flex items-center text-gray-500 hover:text-gray-700">
+                            <i id="toggleIcon" class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <div id="loginPasswordError" class="error-message">Password too short</div>
+                </div>
+                <div class="flex items-center text-sm">
+                    <input type="checkbox" id="rememberMe" class="mr-2">
+                    <label for="rememberMe" class="text-gray-600">Remember me</label>
+                </div>
+                <button type="submit" class="btn-primary w-full py-3 rounded-xl">Sign In</button>
+            </form>
+            <div class="nav-link">
+                Don't have an account? <a href="#" id="goToSignup">Sign Up</a>
+            </div>
+        </div>
+
+        <!-- Signup Form -->
+        <div id="signupForm" class="form-slide form-hidden">
+            <h2 class="text-2xl font-bold text-gray-800 mb-1 text-center">Create Account</h2>
+            <p class="text-center text-gray-600 mb-6 text-sm">Join us today</p>
+            <form id="signupFormElement" class="space-y-4">
+                <div>
+                    <label class="block text-sm mb-1 font-medium text-gray-700">Name</label>
+                    <input type="text" id="signupName" class="input-field w-full px-4 py-3 rounded-xl outline-none" placeholder="Your name">
+                    <div id="signupNameError" class="error-message">Name required</div>
+                </div>
+                <div>
+                    <label class="block text-sm mb-1 font-medium text-gray-700">Email</label>
+                    <input type="email" id="signupEmail" class="input-field w-full px-4 py-3 rounded-xl outline-none" placeholder="Your email">
+                    <div id="signupEmailError" class="error-message">Invalid email</div>
+                </div>
+
+                <!-- Signup Password with toggle -->
+                <div>
+                    <label class="block text-sm mb-1 font-medium text-gray-700">Password</label>
+                    <div class="relative">
+                        <input type="password" id="signupPassword" class="input-field w-full px-4 py-3 pr-12 rounded-xl outline-none" placeholder="Password">
+                        <button type="button" onclick="togglePassword('signupPassword', 'signupToggleIcon')" class="absolute inset-y-0 right-4 flex items-center text-gray-500 hover:text-gray-700">
+                            <i id="signupToggleIcon" class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <div id="signupPasswordError" class="error-message">Too short</div>
+                </div>
+
+                <!-- Confirm Password with toggle -->
+                <div>
+                    <label class="block text-sm mb-1 font-medium text-gray-700">Confirm</label>
+                    <div class="relative">
+                        <input type="password" id="confirmPassword" class="input-field w-full px-4 py-3 pr-12 rounded-xl outline-none" placeholder="Confirm password">
+                        <button type="button" onclick="togglePassword('confirmPassword', 'confirmToggleIcon')" class="absolute inset-y-0 right-4 flex items-center text-gray-500 hover:text-gray-700">
+                            <i id="confirmToggleIcon" class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <div id="confirmPasswordError" class="error-message">Does not match</div>
+                </div>
+
+                <button type="submit" class="btn-primary w-full py-3 rounded-xl">Create Account</button>
+            </form>
+            <div class="nav-link">
+                Already have an account? <a href="#" id="goToLogin">Login</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Message Box Element -->
+    <div id="messageBox" class="message-box"></div>
+
+    <script>
+        const loginTab = document.getElementById('loginTab');
+        const signupTab = document.getElementById('signupTab');
+        const loginForm = document.getElementById('loginForm');
+        const signupForm = document.getElementById('signupForm');
+        const goToSignup = document.getElementById('goToSignup');
+        const goToLogin = document.getElementById('goToLogin');
+        const messageBox = document.getElementById('messageBox');
+
+        loginTab.onclick = switchToLogin;
+        signupTab.onclick = switchToSignup;
+        goToSignup.onclick = switchToSignup;
+        goToLogin.onclick = switchToLogin;
+
+        /**
+         * Switches the active form to the login form.
+         */
+        function switchToLogin() {
+            loginTab.className = 'tab-active flex-1 py-3 rounded-lg font-medium text-sm';
+            signupTab.className = 'tab-inactive flex-1 py-3 rounded-lg font-medium text-sm';
+            loginForm.classList.remove('form-hidden');
+            signupForm.classList.add('form-hidden');
+        }
+
+        /**
+         * Switches the active form to the signup form.
+         */
+        function switchToSignup() {
+            signupTab.className = 'tab-active flex-1 py-3 rounded-lg font-medium text-sm';
+            loginTab.className = 'tab-inactive flex-1 py-3 rounded-lg font-medium text-sm';
+            signupForm.classList.remove('form-hidden');
+            loginForm.classList.add('form-hidden');
+        }
+
+        /**
+         * Displays a temporary message in the message box.
+         * @param {string} message - The message to display.
+         * @param {string} type - The type of message (e.g., 'success', 'error').
+         */
+        function showMessage(message, type = 'success') {
+            messageBox.textContent = message;
+            messageBox.className = `message-box show bg-${type === 'error' ? 'red' : 'green'}-500`;
+            setTimeout(() => {
+                messageBox.classList.remove('show');
+            }, 3000); // Message disappears after 3 seconds
+        }
+
+        document.getElementById('signupFormElement').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // In a real application, you would send this data to a server.
+            showMessage('Account created successfully! Redirecting to login.', 'success');
+            setTimeout(switchToLogin, 1500); // Switch to login after a short delay
+        });
+
+        document.getElementById('loginFormElement').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // In a real application, you would send this data to a server for authentication.
+            showMessage('Login attempt initiated. (No actual login implemented)', 'info');
+        });
+
+        /**
+         * Toggles the visibility of a password input field.
+         * @param {string} inputId - The ID of the password input field.
+         * @param {string} iconId - The ID of the eye icon element.
+         */
+        function togglePassword(inputId, iconId) {
+            const passwordInput = document.getElementById(inputId);
+            const icon = document.getElementById(iconId);
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+    </script>
+</body>
+</html>

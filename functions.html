@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <title>input</title>
+
+    </head>
+    <body>
+        <script>
+    //var x = [1,2,3];
+    // x.pop();//Delete at last
+    // x.push(4);//Add at last
+    // x.shift();//delete element at first
+    // x.unshift(5);//add element at first
+     //console.log(x);
+
+     //splice
+    //  var x=[11,12,13,14,15,16,17,18];
+    //  x.splice(2,5,3,6);
+    //  console.log(x);
+
+    //map
+    // var x = [1,2,3];
+    // x.map(ele => {console.log(ele)})
+    // x.map(ele => {console.log(index,ele)})
+
+    //slice
+    var x = [1,2,3,4,5,6,7,8,9];
+    console.log(x.slice(2,3));
+
+     //length
+     var s = "Thub";
+    console.log(s.length);
+
+    //sort
+    var x = [1,2,3,4,5,6,7,8,9,-4];
+    console.log(x.sort());
+
+    //upperlowercase
+    var s = "Thub";
+    console.log(s.toUpperCase());
+    console.log(s.toLowerCase());
+
+    //index
+     var s = "Thub";
+    console.log(s.indexOf("h"));
+    console.log(s.lastIndexOf());
+
+    //replace
+     var s = "Thubh";
+    console.log(s.replace("h","45"));
+     console.log(s.replaceAll("h","s"));
+
+    //split
+     var s = "Thbh";
+    console.log(s.split(","));
+
+    //split1
+     var s = "T,h,b,h";
+    console.log(s.split(","));
+
+    //keypairs
+    var d ={
+        100:2,
+        "thub":200
+      }
+        //  delete d[100]
+        //  console.log(d)
+        console.log(Object.values(d))
+        console.log(Object.keys(d))
+        console.log(Object.entries(d))
+        // x.map(ele => {console.log(Object.Entries(d).map(ele))})
+     
+    //date
+    var d=new Date();
+    console.log(d)
+    console.log(d.getDate())
+    console.log(d.getMonth())
+    console.log(d.getTime())
+    console.log(d.getMilliseconds())
+     console.log(d.getFullYear())
+</script>
+    </body>
+</html>

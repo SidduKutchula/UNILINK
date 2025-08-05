@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeSync Student Dashboard - CampusSphere</title>
+    <link rel="stylesheet" href="Dashboard.css">
+    <script src="Dashboard.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="fade-in">
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="nav-left">
+                <div class="logo">
+                    <a href="home.html"><img src="./unilink.jpg" alt="UniLink Logo" onerror="this.onerror=null;this.src='https://placehold.co/40x40/E0E7FF/4F46E5?text=UL';" /></a>
+                    <span class="logoname">UniLink</span>
+                </div>
+            </div>
+            <button class="nav-toggle" id="nav-toggle">☰</button>
+            <div class="nav-right" id="nav-section">
+                <nav class="nav-links">
+                    <a href="home.html">Home</a>
+                    <a href="Dashboard.html">Dashboard</a>
+                    <a href="Ideahub.html">IdeaHub</a>
+                    <div class="dropdown">
+                        <a href="Campusnetwork.html" class="dropdown-toggle">CampusConnect ▾</a>
+                        <div class="dropdown-menu">
+                            <a href="Campusnetwork.html">Campus Network</a>
+                            <a href="ishipresume.html">Resume Building</a>
+                        </div>
+                    </div>
+                    <a href="Hackathons.html">Hackathons</a>
+                    <a href="campusX.html">CampusX</a>
+                </nav>
+                <div class="auth-buttons">
+                    <a href="darkmode.html" class="signup">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <section class="profile-hero-section glassmorphism card-hover">
+            <div class="profile-content">
+                <div class="profile-avatar-wrapper">
+                    <img id="profile-pic" src="retouch_2025051319434855.jpg" alt="Profile Picture" class="profile-avatar bounce-gentle">
+                    <input type="file" id="upload-pic" accept="image/*" style="display: none;">
+                    <button id="change-pic-btn" class="change-pic-btn">✏</button>
+                </div>
+                <div class="profile-info">
+                    <h1 class="bounce-in">Hello, <span id="profile-name-display" class="font-bold">Sidduuu</span> 👋<span class="emoji-bounce">🌟</span></h1>
+                    <input type="text" id="profile-name-input" value="Alex Johnson" style="display: none;">
+                    <p id="profile-email-display" class="text-xs text-soft">Siddukuchula62@gmail.com</p>
+                    <input type="email" id="profile-email-input" value="alex.j@unilink.edu" style="display: none;">
+                    <button id="edit-profile-btn" class="edit-profile-btn">Edit Profile</button>
+                    <button id="save-profile-btn" class="save-profile-btn" style="display: none;">Save</button>
+                </div>
+            </div>
+            <div class="profile-quick-stats">
+                <div class="stat-card glassmorphism-lite card-hover">
+                    <span class="icon">📚</span>
+                    <span class="value">6</span>
+                    <span class="label">Current Courses</span>
+                </div>
+                <div class="stat-card glassmorphism-lite card-hover">
+                    <span class="icon">📝</span>
+                    <span class="value">12</span>
+                    <span class="label">Assignments Due</span>
+                </div>
+                <div class="stat-card glassmorphism-lite card-hover">
+                    <span class="icon">🏆</span>
+                    <span class="value">15</span>
+                    <span class="label">Achievements</span>
+                </div>
+            </div>
+        </section>
+
+        <main class="main-content">
+            <div class="main-content-grid">
+                <div class="grid-section">
+                    <section class="glassmorphism rounded-card card-hover">
+                        <h2>📚 Current Courses - Spring 2024</h2>
+                        <div class="courses-grid">
+                            <div class="course-card glassmorphism-lite">
+                                <div class="course-header">
+                                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=50&h=50&fit=crop&auto=format" alt="Data Structures" class="course-img">
+                                    <div class="course-title-grade">
+                                        <h3>Data Structures & Algorithms</h3>
+                                        <span class="grade-badge grade-a badge-pop">A</span>
+                                    </div>
+                                </div>
+                                <p class="course-details">CS 3401 • Prof. Smith • MWF 10:00-11:00</p>
+                                <div class="progress-container">
+                                    <div class="progress-bar bar-animated" style="--progress-width: 92%;"></div>
+                                </div>
+                                <div class="course-next-event">Next: Midterm Exam - March 15</div>
+                            </div>
+
+                            <div class="course-card glassmorphism-lite">
+                                <div class="course-header">
+                                    <img src="https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=50&h=50&fit=crop&auto=format" alt="Web Development" class="course-img">
+                                    <div class="course-title-grade">
+                                        <h3>Advanced Web Development</h3>
+                                        <span class="grade-badge grade-b badge-pop">A-</span>
+                                    </div>
+                                </div>
+                                <p class="course-details">CS 4520 • Prof. Johnson • TTh 2:00-3:30</p>
+                                <div class="progress-container">
+                                    <div class="progress-bar bar-animated" style="--progress-width: 88%;"></div>
+                                </div>
+                                <div class="course-next-event">Next: Project Demo - March 12</div>
+                            </div>
+                            <div class="course-card glassmorphism-lite">
+                                <div class="course-header">
+                                    <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=50&h=50&fit=crop&auto=format"
+                                             alt="Database Systems" class="course-img">
+                                    <div class="course-title-grade">
+                                        <h3>Database Management Systems</h3>
+                                        <span class="grade-badge grade-b badge-pop">B+</span>
+                                    </div>
+                                </div>
+                                <p class="course-details">CS 3320 • Prof. Davis • MWF 1:00-2:00</p>
+                                <div class="progress-container">
+                                    <div class="progress-bar bar-animated" style="--progress-width: 85%;"></div>
+                                </div>
+                                <div class="course-next-event">Next: Assignment 4 - March 10</div>
+                            </div>
+
+                            <div class="course-card glassmorphism-lite">
+                                <div class="course-header">
+                                    <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=50&h=50&fit=crop&auto=format"
+                                             alt="Software Engineering" class="course-img">
+                                    <div class="course-title-grade">
+                                        <h3>Software Engineering</h3>
+                                        <span class="grade-badge grade-a badge-pop">A</span>
+                                    </div>
+                                </div>
+                                <p class="course-details">CS 4320 • Prof. Wilson • TTh 11:00-12:30</p>
+                                <div class="progress-container">
+                                    <div class="progress-bar bar-animated" style="--progress-width: 94%;"></div>
+                                </div>
+                                <div class="course-next-event">Next: Team Presentation - March 14</div>
+                            </div>
+
+                            <div class="course-card glassmorphism-lite">
+                                <div class="course-header">
+                                    <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=50&h=50&fit=crop&auto=format"
+                                             alt="Machine Learning" class="course-img">
+                                    <div class="course-title-grade">
+                                        <h3>Machine Learning</h3>
+                                        <span class="grade-badge grade-b badge-pop">B+</span>
+                                    </div>
+                                </div>
+                                <p class="course-details">CS 4750 • Prof. Chen • MWF 3:00-4:00</p>
+                                <div class="progress-container">
+                                    <div class="progress-bar bar-animated" style="--progress-width: 82%;"></div>
+                                </div>
+                                <div class="course-next-event">Next: Lab Report - March 11</div>
+                            </div>
+
+                            <div class="course-card glassmorphism-lite">
+                                <div class="course-header">
+                                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=50&h=50&fit=crop&auto=format"
+                                             alt="Technical Writing" class="course-img">
+                                    <div class="course-title-grade">
+                                        <h3>Technical Writing</h3>
+                                        <span class="grade-badge grade-a badge-pop">A</span>
+                                    </div>
+                                </div>
+                                <p class="course-details">ENG 3020 • Prof. Taylor • TTh 9:30-11:00</p>
+                                <div class="progress-container">
+                                    <div class="progress-bar bar-animated" style="--progress-width: 96%;"></div>
+                                </div>
+                                <div class="course-next-event">Next: Final Paper - March 20</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="glassmorphism rounded-card card-hover">
+                        <h2>💼 Active Projects & Assignments</h2>
+                        <div class="projects-list">
+                            <div class="project-item glassmorphism-lite">
+                                <div class="project-header">
+                                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=50&h=50&fit=crop&auto=format" alt="E-commerce Project" class="project-img">
+                                    <div>
+                                        <h3>E-commerce Platform</h3>
+                                        <p class="project-meta">Full-stack web application • Team Project</p>
+                                    </div>
+                                </div>
+                                <div class="project-progress">
+                                    <span class="status-badge bg-green-lite badge-pop">95% Complete</span>
+                                    <div class="progress-container">
+                                        <div class="progress-bar bg-green bar-animated" style="--progress-width: 95%;"></div>
+                                    </div>
+                                    <span class="due-date">Due: March 12</span>
+                                </div>
+                            </div>
+                            <div class="project-item glassmorphism-lite">
+                                <div class="project-header">
+                                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=50&h=50&fit=crop&auto=format" alt="Mobile App" class="project-img">
+                                    <div>
+                                        <h3>Fitness Tracking App</h3>
+                                        <p class="project-meta">Flutter mobile application • Individual</p>
+                                    </div>
+                                </div>
+                                <div class="project-progress">
+                                    <span class="status-badge bg-yellow-lite badge-pop">75% Complete</span>
+                                    <div class="progress-container">
+                                        <div class="progress-bar bg-yellow bar-animated" style="--progress-width: 75%;"></div>
+                                    </div>
+                                    <span class="due-date">Due: March 18</span>
+                                </div>
+                            </div>
+                            <div class="project-item glassmorphism-lite">
+                                <div class="project-header">
+                                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=50&h=50&fit=crop&auto=format" alt="Data Analysis" class="project-img">
+                                    <div>
+                                        <h3>ML Data Analysis</h3>
+                                        <p class="project-meta">Machine learning research project</p>
+                                    </div>
+                                </div>
+                                <div class="project-progress">
+                                    <span class="status-badge bg-blue-lite badge-pop">60% Complete</span>
+                                    <div class="progress-container">
+                                        <div class="progress-bar bg-blue bar-animated" style="--progress-width: 60%;"></div>
+                                    </div>
+                                    <span class="due-date">Due: March 25</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="glassmorphism rounded-card card-hover">
+                        <h2>📊 Academic Performance History</h2>
+                        <div class="history-grid">
+                            <div class="history-item glassmorphism-lite">
+                                <h3>Fall 2023</h3>
+                                <div class="gpa">9.25</div>
+                                <p>Semester GPA</p>
+                                <span class="details">18 Credits • Dean's List</span>
+                            </div>
+                            <div class="history-item glassmorphism-lite">
+                                <h3>Spring 2023</h3>
+                                <div class="gpa">9.13</div>
+                                <p>Semester GPA</p>
+                                <span class="details">15 Credits • Honor Roll</span>
+                            </div>
+                            <div class="history-item glassmorphism-lite">
+                                <h3>Fall 2022</h3>
+                                <div class="gpa">9.37</div>
+                                <p>Semester GPA</p>
+                                <span class="details">16 Credits • Good Standing</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="glassmorphism rounded-card card-hover game-section">
+                        <h2>🧠 LifeSync Memory Match</h2>
+                        <p class="game-description text-soft">Find all matching pairs! Sharpen your memory.</p>
+                        <div id="memory-game-board" class="memory-game-board">
+                        </div>
+                        <a href="./game.html"><button id="reset-game-btn" class="confetti-btn glow-on-hover">Start Game 🎮</button></a>
+                    </section>
+                </div>
+
+                <div class="grid-section side-section">
+                    <section class="glassmorphism rounded-card card-hover">
+                        <h2>✅ My To-Do List</h2>
+                        <div class="todo-list">
+                            <div class="todo-item glassmorphism-lite">
+                                <input type="checkbox" id="task1" class="todo-checkbox">
+                                <label for="task1" class="todo-content">
+                                    <h3>Complete DSA Midterm Study Guide</h3>
+                                    <p class="todo-due">Due: Today, 5:00 PM</p>
+                                </label>
+                            </div>
+                            <div class="todo-item glassmorphism-lite">
+                                <input type="checkbox" id="task2" class="todo-checkbox">
+                                <label for="task2" class="todo-content">
+                                    <h3>Submit Web Dev Project Proposal</h3>
+                                    <p class="todo-due">Due: Today, 11:59 PM</p>
+                                </label>
+                            </div>
+                            <div class="todo-item glassmorphism-lite">
+                                <input type="checkbox" id="task3" class="todo-checkbox">
+                                <label for="task3" class="todo-content">
+                                    <h3>Read Chapter 7 for ML</h3>
+                                    <p class="todo-due">Due: Tomorrow, 9:00 AM</p>
+                                </label>
+                            </div>
+                            <div class="todo-item glassmorphism-lite">
+                                <input type="checkbox" id="task4" class="todo-checkbox">
+                                <label for="task4" class="todo-content">
+                                    <h3>Prepare questions for Prof. Smith's office hours</h3>
+                                    <p class="todo-due">Due: Tomorrow, 2:00 PM</p>
+                                </label>
+                            </div>
+                            <div class="todo-item glassmorphism-lite">
+                                <input type="checkbox" id="task5" class="todo-checkbox">
+                                <label for="task5" class="todo-content">
+                                    <h3>Team meeting for E-commerce Platform</h3>
+                                    <p class="todo-due">Due: Fri, 4:00 PM</p>
+                                </label>
+                            </div>
+                        </div>
+                        <button class="add-todo-btn confetti-btn glow-on-hover">➕ Add New Task</button>
+                    </section>
+
+                    <section class="glassmorphism rounded-card card-hover">
+                        <h2>🏆 Achievements & Certifications</h2>
+                        <div class="achievements-list">
+                            <div class="achievement-item glassmorphism-lite">
+                                <img src="https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=40&h=40&fit=crop&auto=format" alt="Dean's List" class="achievement-icon">
+                                <div>
+                                    <h3>Dean's List</h3>
+                                    <p>Fall 2023 • 3.92 GPA</p>
+                                </div>
+                            </div>
+                            <div class="achievement-item glassmorphism-lite">
+                                <img src="https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=40&h=40&fit=crop&auto=format" alt="React Certification" class="achievement-icon">
+                                <div>
+                                    <h3>React Developer</h3>
+                                    <p>Meta Certification • Feb 2024</p>
+                                </div>
+                            </div>
+                            <div class="achievement-item glassmorphism-lite">
+                                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=40&h=40&fit=crop&auto=format" alt="Leadership Award" class="achievement-icon">
+                                <div>
+                                    <h3>Leadership Award</h3>
+                                    <p>CS Student Association • 2023</p>
+                                </div>
+                            </div>
+                            <div class="achievement-item glassmorphism-lite">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=40&h=40&fit=crop&auto=format"
+                                             alt="Hackathon Winner" class="achievement-icon">
+                                <div>
+                                    <h3>Hackathon Winner</h3>
+                                    <p>TechFest 2023 • 1st Place</p>
+                                </div>
+                            </div>
+                            <div class="achievement-item glassmorphism-lite">
+                                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=40&h=40&fit=crop&auto=format"
+                                             alt="Honor Society" class="achievement-icon">
+                                <div>
+                                    <h3>Honor Society</h3>
+                                    <p>Upsilon Pi Epsilon • 2023</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="overall-progress-card glassmorphism-lite card-hover fade-in" style="--animation-delay: 0.2s;">
+                            <h3>Overall Progress: Degree Completion</h3>
+                            <p class="progress-meta">You're making great strides towards your goals!</p>
+                            <div class="progress-container large">
+                                <div class="progress-bar bar-animated bg-purple-pink" style="--progress-width: 70%;"></div>
+                            </div>
+                            <div class="progress-stats">
+                                <span>70% Complete</span>
+                                <span>100 Credits Earned / 140 Total</span>
+                            </div>
+                        </div>
+
+                      <a href="#"><button id="trigger-confetti" class="confetti-btn glow-on-hover">Celebrate Achievements! 🎉</button></a>  
+                    </section>
+
+                    <section class="glassmorphism rounded-card card-hover">
+                        <h2>❤️ Health & Well-being</h2>
+                        <div class="health-stats">
+                            <div class="health-item glassmorphism-lite">
+                                <h3>Sleep <span class="emoji">😴</span></h3>
+                                <p>Last Night: <span class="font-bold">7.5 hours</span></p>
+                                <div class="progress-container small">
+                                    <div class="progress-bar bg-success bar-animated" style="--progress-width: 90%;"></div>
+                                </div>
+                            </div>
+                            <div class="health-item glassmorphism-lite">
+                                <h3>Hydration <span class="emoji">💧</span></h3>
+                                <p>Today: <span class="font-bold">6 glasses</span></p>
+                                <div class="progress-container small">
+                                    <div class="progress-bar bg-primary bar-animated" style="--progress-width: 75%;"></div>
+                                </div>
+                            </div>
+                            <div class="health-item glassmorphism-lite">
+                                <h3>Mindfulness <span class="emoji">🧘‍♀️</span></h3>
+                                <p>Streak: <span class="font-bold">5 days</span></p>
+                                <div class="progress-container small">
+                                    <div class="progress-bar bg-accent bar-animated" style="--progress-width: 100%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    </div>
+            </div>
+        </main>
+    </div>
+    <script>
+  // Define a function to toggle the menu visibility
+  function toggleMenu() {
+    // Get the navigation element
+    const nav = document.getElementById('nav-section');
+    
+    // Toggle the 'active' class
+    nav.classList.toggle('active');
+  }
+
+  // Wait until the DOM is fully loaded before attaching the event
+  document.addEventListener('DOMContentLoaded', function () {
+    // Add click event listener to the hamburger button
+    document.getElementById('nav-toggle').addEventListener('click', toggleMenu);
+  });
+</script>
+</body>
+</html>

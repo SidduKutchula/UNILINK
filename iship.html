@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UniLink</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #f3f4fd, #fafbff);
+      color: #333;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    header.navbar {
+      width: 100%;
+      padding: 0.75rem 0;
+      background: white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #7c3aed;
+    }
+
+    .nav-toggle {
+      display: none;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    .nav-section {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #7c3aed;
+    }
+
+    .auth-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .auth-buttons a {
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .login {
+      color: #333;
+    }
+
+    .signup {
+      background-color: #3b82f6;
+      color: white;
+      transition: background 0.3s ease;
+    }
+
+    .signup:hover {
+      background-color: #2563eb;
+    }
+
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 4rem;
+      padding-bottom: 4rem;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-content, .hero-image {
+      flex: 1 1 45%;
+      min-width: 300px;
+    }
+
+    .hero-content {
+      padding-right: 1rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background-color: #eef;
+      color: #3b82f6;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: 3rem;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .highlight {
+      background: linear-gradient(to right, #6366f1, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .highlight.orange {
+      background: linear-gradient(to right, #f97316, #fb923c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-content p {
+      margin-bottom: 2rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+
+    .primary {
+      background-color: #3b82f6;
+      color: white;
+    }
+
+    .primary:hover {
+      background-color: #2563eb;
+    }
+
+    .secondary {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      color: #333;
+    }
+
+    .secondary:hover {
+      background-color: #f3f4f6;
+    }
+
+    .stats {
+      display: flex;
+      gap: 2rem;
+      font-size: 1rem;
+      color: #333;
+      flex-wrap: wrap;
+    }
+
+    .stats div {
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .stats div strong {
+      font-size: 1.3rem;
+      display: block;
+      color: #1d4ed8;
+    }
+
+    .stats div:nth-child(2) strong {
+      color: #f97316;
+    }
+
+    .stats div:nth-child(3) strong {
+      color: #16a34a;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-content, .hero-image {
+        flex: 1 1 100%;
+        padding: 0;
+      }
+
+      .stats {
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .nav-section {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 1rem;
+        gap: 1rem;
+      }
+
+      .nav-section.show {
+        display: flex;
+      }
+
+      /* .nav-links {
+        flex-direction: column;
+        gap: 0.75rem;
+      } */
+      .nav-links {
+       flex-direction: column;
+       align-items: flex-start;
+       text-align: left;
+       width: 100%;
+       padding-left: 1rem;
+      }
+
+      .auth-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+    .dropdown {
+  position: relative;
+}
+
+.dropdown .submenu {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  z-index: 1000;
+  min-width: 180px;
+}
+
+.dropdown .submenu a {
+  padding: 0.5rem 0;
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.dropdown .submenu a:hover {
+  color: #7c3aed;
+}
+
+.dropdown:hover .submenu {
+  display: flex;
+}
+.arrow {
+  font-size: 1.2rem; /* You can increase this to 1.5rem or 2rem */
+  font-weight: bold;
+  line-height: 1;
+}
+
+
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container">
+      <div class="logo">🔮 UniLink</div>
+      <div class="nav-toggle" id="nav-toggle">&#9776;</div>
+
+      <div class="nav-section" id="nav-section">
+        <nav class="nav-links">
+          <a href="#">Dashboard</a>
+          <a href="#">IdeaHub</a>
+          <div class="dropdown">
+          <!-- <a href="#" class="has-submenu">CampusConnect ▼</a> -->
+           <a href="#" class="has-submenu">CampusConnect <span class="arrow">▾</span></a>
+                  <div class="submenu">
+                  <a href="#">Resume Builder</a>
+                  <a href="#">Campus Network</a>
+             </div>
+          </div>
+          <a href="#">Hackathons</a>
+          <a href="#">CampusX</a>
+          <a href="#">Puzzle</a>
+        </nav>
+        <div class="auth-buttons">
+          <a href="#" class="login">Login</a>
+          <a href="#" class="signup">Sign Up</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="container hero">
+    <div class="hero-content">
+      <span class="badge">🚀 New Platform for Students</span>
+      <h1>
+        <span class="highlight">Connect.</span>
+        <span class="highlight">Create.</span>
+        <span class="highlight orange">Collaborate!</span>
+      </h1>
+      <p>
+        Your all-in-one university platform for book trading, resume building,
+        project collaboration, and academic networking. Join thousands of
+        students connecting across campus.
+      </p>
+      <div class="buttons">
+        <a href="#" class="btn primary">Get Started →</a>
+        <a href="#" class="btn secondary">💡 Explore Ideas</a>
+      </div>
+      <div class="stats">
+        <div><strong>1,200+</strong>Books Traded</div>
+        <div><strong>850+</strong>Students</div>
+        <div><strong>500+</strong>Resumes Built</div>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <img src="student.png.png" alt="Students Collaborating"/>
+    </div>
+  </section>
+
+  <script>
+    const toggleBtn = document.getElementById('nav-toggle');
+    const navSection = document.getElementById('nav-section');
+    toggleBtn.addEventListener('click', () => {
+      navSection.classList.toggle('show');
+    });
+  </script>
+  <script>
+  const submenuTrigger = document.querySelector('.has-submenu');
+  const submenu = document.querySelector('.submenu');
+
+  submenuTrigger.addEventListener('click', (e) => {
+    e.preventDefault();
+    submenu.classList.toggle('show');
+    
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusX - Student Book Trading Platform</title>
+    <link rel="stylesheet" href="campusx.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="nav-left">
+                <div class="logo">
+                    <a href="home.html"><img src="./unilink.jpg" alt="UniLink Logo" onerror="this.onerror=null;this.src='https://placehold.co/40x40/E0E7FF/4F46E5?text=UL';" /></a>
+                    <span class="logoname">UniLink</span>
+                </div>
+            </div>
+            <button class="nav-toggle" id="nav-toggle">☰</button>
+            <div class="nav-right" id="nav-section">
+                <nav class="nav-links">
+                    <a href="home.html">Home</a>
+                    <a href="Dashboard.html">Dashboard</a>
+                    <a href="Ideahub.html">IdeaHub</a>
+                    <div class="dropdown">
+                        <a href="Campusnetwork.html" class="dropdown-toggle">CampusConnect ▾</a>
+                        <div class="dropdown-menu">
+                            <a href="campusconnect1.html">Campus Network</a>
+                            <a href="ishipresume.html">Resume Building</a>
+                        </div>
+                    </div>
+                    <a href="Hackathons.html">Hackathons</a>
+                    <a href="campusX.html">CampusX</a>
+                </nav>
+                <div class="auth-buttons">
+                    <a href="darkmode.html" class="signup">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+              <video autoplay muted loop playsinline class="bg-video">
+                <source src="background.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fa-thin fa-sparkles"></i>
+                    <span>Student Book Trading Platform</span>
+                </div>        
+                
+                <h1 class="hero-title">
+                    <span class="gradient-text">Campus</span><span>X</span>
+                </h1>
+                
+                <p class="hero-description">
+                    Buy and sell textbooks with fellow students. Save money, build connections, 
+                    and help create a sustainable campus community.
+                </p>
+                
+                <div class="hero-buttons">
+                    <button class="btn btn-primary"  onclick="document.getElementById('mainContent').scrollIntoView({ behavior: 'smooth' })">
+                        <i class="fas fa-book-open"></i>
+                        Start Trading
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="btn btn-outline">Learn More</button>
+                </div>
+            </div>
+        </section>
+  </div>
+        <!-- Main Content -->
+        <div class="main-content" id="mainContent">
+            <video autoplay muted loop playsinline class="bg-video">
+        <source src="background2.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+    </video>
+            <!-- Tabs Navigation -->
+            <div class="tabs">
+                <div class="tab-list">
+                    <button class="tab-trigger active" data-tab="buy">
+                        <i class="fas fa-shopping-cart"></i>
+                        Buy Books
+                    </button>
+                    <button class="tab-trigger" data-tab="sell">
+                        <i class="fas fa-plus"></i>
+                        Sell Books
+                    </button>
+                    <button class="tab-trigger" data-tab="reviews">
+                        <i class="fas fa-star"></i>
+                        Reviews
+                    </button>
+                    <button class="tab-trigger" data-tab="contact">
+                        <i class="fas fa-envelope"></i>
+                        Contact
+                    </button>
+                </div>
+
+                <!-- Buy Books Tab -->
+                <div class="tab-content active" id="buy">
+                    <div class="search-filters">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="searchInput" placeholder="Search books by title, author, or subject...">
+                        </div>
+                        <select id="categoryFilter" class="filter-select">
+                            <option value="all">All Books</option>
+                            <option value="computer-science">Computer Science</option>
+                            <option value="mathematics">Mathematics</option>
+                            <option value="chemistry">Chemistry</option>
+                            <option value="physics">Physics</option>
+                            <option value="biology">Biology</option>
+                            <option value="literature">Literature</option>
+                            <option value="business">Business</option>
+                        </select>
+                    </div>
+
+                    <div class="books-grid" id="booksGrid">
+                    </div>
+                </div>
+
+                <!-- Sell Books Tab -->
+                <div class="tab-content" id="sell">
+                    <div class="sell-form-container">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-plus"></i> Sell Your Book</h3>
+                            </div>
+                            <div class="card-content">
+                                <form id="sellBookForm">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="bookTitle">Book Title *</label>
+                                            <input type="text" id="bookTitle" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="bookAuthor">Author *</label>
+                                            <input type="text" id="bookAuthor" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="bookSubject">Subject *</label>
+                                            <select id="bookSubject" required>
+                                                <option value="">Select subject</option>
+                                                <option value="computer-science">Computer Science</option>
+                                                <option value="mathematics">Mathematics</option>
+                                                <option value="chemistry">Chemistry</option>
+                                                <option value="physics">Physics</option>
+                                                <option value="biology">Biology</option>
+                                                <option value="literature">Literature</option>
+                                                <option value="business">Business</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="bookCondition">Condition *</label>
+                                            <select id="bookCondition" required>
+                                                <option value="">Select condition</option>
+                                                <option value="like-new">Like New</option>
+                                                <option value="good">Good</option>
+                                                <option value="fair">Fair</option>
+                                                <option value="poor">Poor</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="askingPrice">Asking Price ($) *</label>
+                                            <input type="number" id="askingPrice" step="0.01" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="originalPrice">Original Price ($)</label>
+                                            <input type="number" id="originalPrice" step="0.01">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="bookDescription">Description</label>
+                                        <textarea id="bookDescription" rows="4" placeholder="Describe the book's condition, any highlighting, missing pages, etc."></textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Contact Information *</label>
+                                        <div class="form-row">
+                                            <input type="email" id="sellerEmail" placeholder="Your email" required>
+                                            <input type="tel" id="sellerPhone" placeholder="Your phone (optional)">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-actions">
+                                        <button type="button" class="btn btn-outline">Save as Draft</button>
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="fas fa-book-open"></i>
+                                            Post Book
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reviews Tab -->
+                <div class="tab-content" id="reviews">
+                    <div class="reviews-header">
+                        <h2>Community Reviews</h2>
+                        <p>See what students are saying about their book trading experiences</p>
+                    </div>
+                    <div class="reviews-grid" id="reviewsGrid">
+                    </div>
+                </div>
+
+                <!-- Contact Tab -->
+<div class="tab-content active" id="buyBooksTab">
+    <div id="booksGrid"></div>
+</div>
+<!-- Contact Tab -->
+<div class="tab-content" id="contact">
+    <div class="contact-container">
+        <div class="contact-header">
+            <h2>Contact Us</h2>
+            <p>Have questions or need help with your book trading experience?</p>
+        </div>
+
+        <div class="card">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email Support</h3>
+                    <p>support@unilink.edu</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <h3>Phone Support</h3>
+                    <p>9989648136</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>UniLink</h3>
+                    <p>Student Center, Room 205</p>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3>Send us a message</h3>
+                <form id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contactName">Name</label>
+                            <input type="text" id="contactName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail">Email</label>
+                            <input type="email" id="contactEmail" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactSubject">Subject</label>
+                        <input type="text" id="contactSubject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <i class="fas fa-envelope"></i>
+                        Send Message
+                    </button>
+                    <button class="btn btn-secondary" id="backToBooks" >
+                        <i class="fas fa-arrow-left"></i> Back to Books
+                    </button>
+                  </form>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+<!-- </div> -->
+    <script src="campusx.js"></script>
+</body>
+<script>
+  // Define a function to toggle the menu visibility
+  function toggleMenu() {
+    // Get the navigation element
+    const nav = document.getElementById('nav-section');
+    
+    // Toggle the 'active' class
+    nav.classList.toggle('active');
+  }
+
+  // Wait until the DOM is fully loaded before attaching the event
+  document.addEventListener('DOMContentLoaded', function () {
+    // Add click event listener to the hamburger button
+    document.getElementById('nav-toggle').addEventListener('click', toggleMenu);
+  });
+</script>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AR Campus Navigation</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0fb9e4;
+      color: #1a202c;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    body.dark-theme {
+      background-color: #000;
+      color: #fff;
+    }
+    body.dark-theme .title {
+      color: #0000ff;
+    }
+    body.dark-theme .subtitle strong,
+    body.dark-theme .features,
+    body.dark-theme .benefits,
+    body.dark-theme .security,
+    body.dark-theme .tools {
+      color: #fff;
+    }
+    body.dark-theme h3 {
+      color: #0000ff;
+    }
+    body.dark-theme .call-to-action {
+      background-color: #333;
+      color: #fff;
+    }
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+    .bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index:-1;
+    }
+    .title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #0f766e;
+    }
+    .subtitle {
+      font-size: 1.2rem;
+      color: #444;
+      margin-bottom: 40px;
+    }
+    body.dark-theme .subtitle {
+      color: #ccc;
+    }
+    .features, .benefits, .security, .tools {
+      margin-bottom: 40px;
+    }
+    h3 {
+      font-size: 1.6rem;
+      color: #0f766e;
+      margin-bottom: 10px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li::before {
+      content: "🗺";
+      margin-right: 10px;
+    }
+    .call-to-action {
+      background-color: #0f766e;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 8px;
+    }
+    .call-to-action h4 {
+      margin: 0 0 10px;
+    }
+    .call-to-action a {
+      color: #ffffff;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <video autoplay muted loop class="bg-video">
+  <source src="./Arcampus.mp4" type="video/mp4">
+</video>
+  <section class="section">
+    <h1 class="title">🗺 AR Campus Navigation</h1>
+    <p class="subtitle"><strong>By Emma WilsonAdvanced</strong><br/>Augmented reality app to help new students navigate campus buildings and find classrooms, labs, and facilities.</p>
+
+    <div class="features">
+      <h3>💡 Key Features</h3>
+      <ul>
+        <li>AR-Based Indoor & Outdoor Navigation</li>
+        <li>Interactive Campus Map with Search</li>
+        <li>Timetable Sync for Class Locations</li>
+        <li>Multi-language Support</li>
+        <li>POI Details with Notifications</li>
+        <li>Accessibility-Friendly Guidance</li>
+      </ul>
+    </div>
+
+    <div class="benefits">
+      <h3>✅ Benefits</h3>
+      <ul>
+        <li>Improve campus onboarding experience</li>
+        <li>Help students confidently reach classes and events</li>
+        <li>Enhance accessibility for all students</li>
+        <li>Support multi-campus orientation</li>
+        <li>Reduce confusion and improve punctuality</li>
+      </ul>
+    </div>
+
+    <div class="security">
+      <h3>🔐 Secure & Scalable</h3>
+      <ul>
+        <li>Secure GPS/Wi-Fi/Beacon data handling</li>
+        <li>User-controlled location permissions</li>
+        <li>Scales easily for large campuses</li>
+      </ul>
+    </div>
+
+    <div class="tools">
+      <h3>🛠 Tools & Technologies Used</h3>
+      <ul>
+        <li>Augmented Reality SDKs (ARKit, ARCore)</li>
+        <li>Real-Time Geolocation & Beacons</li>
+        <li>3D Map Rendering</li>
+        <li>Mobile Frameworks (Flutter, React Native)</li>
+        <li>Multi-language & Accessibility APIs</li>
+        <li>Navigation Algorithms & UX Design</li>
+      </ul>
+    </div>
+
+    <div class="call-to-action">
+      <h4>Navigate your campus like a pro.</h4>
+      <p>Let students explore and learn their surroundings with AR-powered guidance.</p>
+      <p><a href="#">Request a Demo</a></p>
+    </div>
+  </section>
+</body>
+</html>

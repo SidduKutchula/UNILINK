@@ -7,12 +7,8 @@ const booksData = [
         originalPrice: 150,
         condition: "Good",
         subject: "computer-science",
-        image: "images/algorithms.jpeg",
-        seller: {
-            name: "Alex Chen",
-            rating: 4.8,
-            reviews: 23
-        },
+        image: "algorithms.jpg",
+        seller: { name: "Alex Chen", rating: 4.8, reviews: 23 },
         posted: "2 days ago",
         description: "Well-maintained textbook with some highlighting. All pages intact."
     },
@@ -24,12 +20,8 @@ const booksData = [
         originalPrice: 280,
         condition: "Like New",
         subject: "mathematics",
-        image: "images/calculus.jpeg",
-        seller: {
-            name: "Sarah Johnson",
-            rating: 4.9,
-            reviews: 31
-        },
+        image: "calculus.jpg",
+        seller: { name: "Sarah Johnson", rating: 4.9, reviews: 31 },
         posted: "1 day ago",
         description: "Barely used, purchased this semester but switching majors."
     },
@@ -41,12 +33,8 @@ const booksData = [
         originalPrice: 200,
         condition: "Fair",
         subject: "chemistry",
-        image: "images/chemistry.jpeg",
-        seller: {
-            name: "Mike Rodriguez",
-            rating: 4.6,
-            reviews: 18
-        },
+        image: "chemistry.jpg",
+        seller: { name: "Mike Rodriguez", rating: 4.6, reviews: 18 },
         posted: "3 days ago",
         description: "Some wear and tear but all content is readable. Great for studying."
     },
@@ -58,12 +46,8 @@ const booksData = [
         originalPrice: 250,
         condition: "Good",
         subject: "physics",
-        image: "images/physics.jpeg",
-        seller: {
-            name: "Emma Davis",
-            rating: 4.7,
-            reviews: 15
-        },
+        image: "physics.jpg",
+        seller: { name: "Emma Davis", rating: 4.7, reviews: 15 },
         posted: "1 week ago",
         description: "Clean copy with minimal highlighting. Perfect for coursework."
     },
@@ -75,12 +59,8 @@ const booksData = [
         originalPrice: 320,
         condition: "Like New",
         subject: "biology",
-        image: "images/biology.jpeg",
-        seller: {
-            name: "David Kim",
-            rating: 4.9,
-            reviews: 27
-        },
+        image: "biology.jpg",
+        seller: { name: "David Kim", rating: 4.9, reviews: 27 },
         posted: "3 days ago",
         description: "Excellent condition, used only for one semester."
     },
@@ -92,72 +72,20 @@ const booksData = [
         originalPrice: 18,
         condition: "Good",
         subject: "literature",
-        image: "images/gatsby.jpeg",
-        seller: {
-            name: "Lisa Wang",
-            rating: 4.5,
-            reviews: 12
-        },
+        image: "gatsby.jpg",
+        seller: { name: "Lisa Wang", rating: 4.5, reviews: 12 },
         posted: "5 days ago",
         description: "Classic literature in good reading condition."
     }
 ];
 
 const reviewsData = [
-    {
-        id: 1,
-        reviewer: "Akshaya",
-        rating: 5,
-        review: "Great experience buying from Alex! Book was exactly as described and delivery was quick.",
-        date: "2 days ago",
-        seller: "Alex Chen",
-        book: "Introduction to Algorithms"
-    },
-    {
-        id: 2,
-        reviewer: "Neeraja",
-        rating: 4,
-        review: "Book was in good condition. Minor highlighting but nothing that affected readability.",
-        date: "1 week ago",
-        seller: "Sarah Johnson",
-        book: "Calculus: Early Transcendentals"
-    },
-    {
-        id: 3,
-        reviewer: "Srisucha",
-        rating: 5,
-        review: "Excellent seller! Very responsive and book was better than expected.",
-        date: "2 weeks ago",
-        seller: "Mike Rodriguez",
-        book: "Organic Chemistry"
-    },
-    {
-        id: 4,
-        reviewer: "Yakanksha",
-        rating: 4,
-        review: "Fast transaction and fair price. Would definitely buy from this seller again.",
-        date: "3 weeks ago",
-        seller: "Emma Davis",
-        book: "Physics for Scientists and Engineers"
-    },
-    {
-        id: 5,
-        reviewer: "Mounika",
-        rating: 5,
-        review: "Books arrived in excellent condition and on time. Very happy with the service—will definitely order again!",
-        date: "3 weeks ago",
-        seller: "Emma Davis",
-        book: "Physics for Scientists and Engineers"
-    },
-    {
-        id: 6,
-        reviewer: "Siddu",
-        rating: 4,
-        review: "Affordable prices and fast delivery. The books were genuine and neatly packed. Great buying experience.",
-        date: "3 weeks ago",
-        seller: "Emma Davis",
-        book: "Physics for Scientists and Engineers"
-    }
+    { id: 1, reviewer: "Akshaya", rating: 5, review: "Great experience buying from Alex! Book was exactly as described and delivery was quick.", date: "2 days ago", seller: "Alex Chen", book: "Introduction to Algorithms" },
+    { id: 2, reviewer: "Neeraja", rating: 4, review: "Book was in good condition. Minor highlighting but nothing that affected readability.", date: "1 week ago", seller: "Sarah Johnson", book: "Calculus: Early Transcendentals" },
+    { id: 3, reviewer: "Srisucha", rating: 5, review: "Excellent seller! Very responsive and book was better than expected.", date: "2 weeks ago", seller: "Mike Rodriguez", book: "Organic Chemistry" },
+    { id: 4, reviewer: "Yakanksha", rating: 4, review: "Fast transaction and fair price. Would definitely buy from this seller again.", date: "3 weeks ago", seller: "Emma Davis", book: "Physics for Scientists and Engineers" },
+    { id: 5, reviewer: "Mounika", rating: 5, review: "Books arrived in excellent condition and on time. Very happy with the service—will definitely order again!", date: "2 weeks ago", seller: "Emma Davis", book: "Physics for Scientists and Engineers" },
+    { id: 6, reviewer: "Siddu", rating: 4, review: "Affordable prices and fast delivery. The books were genuine and neatly packed. Great buying experience.", date: "3 weeks ago", seller: "Emma Davis", book: "Physics for Scientists and Engineers" }
 ];
 
 const subjectLabels = {
@@ -170,7 +98,7 @@ const subjectLabels = {
     "business": "Business"
 };
 
-// Tab functionality
+// Tabs
 function initializeTabs() {
     const tabTriggers = document.querySelectorAll('.tab-trigger');
     const tabContents = document.querySelectorAll('.tab-content');
@@ -178,21 +106,18 @@ function initializeTabs() {
     tabTriggers.forEach(trigger => {
         trigger.addEventListener('click', () => {
             const targetTab = trigger.getAttribute('data-tab');
-
             tabTriggers.forEach(t => t.classList.remove('active'));
             tabContents.forEach(c => c.classList.remove('active'));
-
             trigger.classList.add('active');
             document.getElementById(targetTab).classList.add('active');
         });
     });
 }
 
-// Book filtering and search
+// Search & Filter
 function filterBooks() {
     const searchQuery = document.getElementById('searchInput').value.toLowerCase();
     const selectedCategory = document.getElementById('categoryFilter').value;
-
     let filteredBooks = booksData;
 
     if (searchQuery) {
@@ -212,7 +137,6 @@ function filterBooks() {
 
 function renderBooks(books) {
     const booksGrid = document.getElementById('booksGrid');
-
     if (books.length === 0) {
         booksGrid.innerHTML = '<div style="text-align: center; padding: 40px; color: #666;">No books found matching your criteria.</div>';
         return;
@@ -238,21 +162,12 @@ function renderBooks(books) {
                 <div class="seller-info">
                     <div class="seller-avatar">${book.seller.name[0]}</div>
                     <span class="seller-name">${book.seller.name}</span>
-                    <div class="seller-rating">
-                        <i class="fas fa-star"></i>
-                        <span>${book.seller.rating}</span>
-                    </div>
+                    <div class="seller-rating"><i class="fas fa-star"></i><span>${book.seller.rating}</span></div>
                 </div>
                 <div class="book-actions">
-                    <button class="btn btn-primary" onclick="goToContactTab('${book.title}', '${book.seller.name}')">
-                        <i class="fas fa-comment"></i> Contact
-                    </button>
-                    <button class="btn btn-icon" onclick="toggleFavorite(${book.id})">
-                        <i class="fas fa-heart"></i>
-                    </button>
-                    <button class="btn btn-icon" onclick="viewBookDetails(${book.id})">
-                        <i class="fas fa-eye"></i>
-                    </button>
+                    <button class="btn btn-primary" onclick="goToContactTab('${book.title}', '${book.seller.name}')"><i class="fas fa-comment"></i> Contact</button>
+                    <button class="btn btn-icon" onclick="toggleFavorite(event, ${book.id})"><i class="fas fa-heart"></i></button>
+                    <button class="btn btn-icon" onclick="viewBookDetails(event, ${book.id})"><i class="fas fa-eye"></i></button>
                 </div>
             </div>
         </div>
@@ -260,22 +175,10 @@ function renderBooks(books) {
 }
 
 function goToContactTab(bookTitle, sellerName) {
-    
     document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
     document.querySelectorAll('.tab-trigger').forEach(trigger => trigger.classList.remove('active'));
-
-    
     document.getElementById('contact').classList.add('active');
-
     document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-
-   
-    const subjectInput = document.getElementById('contactSubject');
-    const messageInput = document.getElementById('contactMessage');
-    if (subjectInput) subjectInput.value = `Inquiry about "${bookTitle}" from ${sellerName}`;
-    if (messageInput) messageInput.value = `Hi ${sellerName}, I'm interested in your book "${bookTitle}".`;
-
-    
     const tabNav = document.querySelector('.tab-nav');
     if (tabNav) tabNav.style.display = 'none';
 }
@@ -284,21 +187,15 @@ document.getElementById('backToBooks').addEventListener('click', function (e) {
     e.preventDefault();
     document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
     document.querySelectorAll('.tab-trigger').forEach(trigger => trigger.classList.remove('active'));
-
-
     document.getElementById('buyBooksTab').classList.add('active');
     const buyBooksTrigger = document.querySelector('[data-tab="buyBooksTab"]');
     if (buyBooksTrigger) buyBooksTrigger.classList.add('active');
-
     const tabNav = document.querySelector('.tab-nav');
     if (tabNav) tabNav.style.display = 'flex';
-
-    
     document.getElementById('buyBooksTab').scrollIntoView({ behavior: 'smooth' });
 });
 
-
-// Render reviews
+// Reviews
 function renderReviews() {
     const reviewsGrid = document.getElementById('reviewsGrid');
     reviewsGrid.innerHTML = reviewsData.map(review => `
@@ -308,9 +205,7 @@ function renderReviews() {
                 <div class="review-info">
                     <div class="review-meta">
                         <span class="reviewer-name">${review.reviewer}</span>
-                        <div class="review-rating">
-                            ${generateStars(review.rating)}
-                        </div>
+                        <div class="review-rating">${generateStars(review.rating)}</div>
                     </div>
                     <p class="review-text">${review.review}</p>
                     <div class="review-details">
@@ -332,43 +227,39 @@ function generateStars(rating) {
     return stars;
 }
 
-// Event handlers
-function contactSeller(sellerName, bookTitle) {
-    alert(`Contacting ${sellerName} about "${bookTitle}". In a real application, this would open a messaging interface.`);
+function toggleFavorite(event, bookId) {
+    const icon = event.currentTarget.querySelector('.fa-heart');
+    icon.classList.toggle('active-heart');
+    showMessage(`Book ${bookId} added to favorites!`);
 }
 
-function toggleFavorite(bookId) {
-    alert(`Book ${bookId} added to favorites! In a real application, this would save to user preferences.`);
-}
-
-function viewBookDetails(bookId) {
-    const book = booksData.find(b => b.id === bookId);
-    alert(`Viewing details for "${book.title}". In a real application, this would open a detailed view modal.`);
+function viewBookDetails(event, bookId) {
+    const icon = event.currentTarget.querySelector('.fa-eye');
+    icon.classList.toggle('active-eye');
+    document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+    document.querySelectorAll('.tab-trigger').forEach(trigger => trigger.classList.remove('active'));
+    document.getElementById('reviews').classList.add('active');
+    const reviewTabTrigger = document.querySelector('[data-tab="reviews"]');
+    if (reviewTabTrigger) reviewTabTrigger.classList.add('active');
+    document.getElementById('reviews').scrollIntoView({ behavior: 'smooth' });
 }
 
 function showMessage(message, type = 'success') {
     const toast = document.createElement('div');
     toast.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
+        position: fixed; top: 20px; right: 20px;
         background: ${type === 'success' ? '#4caf50' : '#f44336'};
-        color: white;
-        padding: 16px 24px;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        z-index: 1000;
-        font-weight: 500;
+        color: white; padding: 16px 24px; border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 1000; font-weight: 500;
     `;
     toast.textContent = message;
     document.body.appendChild(toast);
     setTimeout(() => toast.remove(), 3000);
 }
 
-// Form handlers
+// Forms
 function handleSellBookForm(event) {
     event.preventDefault();
-
     const formData = {
         title: document.getElementById('bookTitle').value,
         author: document.getElementById('bookAuthor').value,
@@ -380,13 +271,10 @@ function handleSellBookForm(event) {
         email: document.getElementById('sellerEmail').value,
         phone: document.getElementById('sellerPhone').value
     };
-
-    if (!formData.title || !formData.author || !formData.subject || 
-        !formData.condition || !formData.askingPrice || !formData.email) {
+    if (!formData.title || !formData.author || !formData.subject || !formData.condition || !formData.askingPrice || !formData.email) {
         showMessage('Please fill in all required fields.', 'error');
         return;
     }
-
     console.log('Book listing data:', formData);
     showMessage('Your book has been listed successfully!');
     document.getElementById('sellBookForm').reset();
@@ -394,34 +282,29 @@ function handleSellBookForm(event) {
 
 function handleContactForm(event) {
     event.preventDefault();
-
     const formData = {
         name: document.getElementById('contactName').value,
         email: document.getElementById('contactEmail').value,
         subject: document.getElementById('contactSubject').value,
         message: document.getElementById('contactMessage').value
     };
-
     if (!formData.name || !formData.email || !formData.subject || !formData.message) {
         showMessage('Please fill in all fields.', 'error');
         return;
     }
-
     console.log('Contact form data:', formData);
     showMessage('Your message has been sent successfully!');
     document.getElementById('contactForm').reset();
 }
 
-// Initialize app
+// Init
 document.addEventListener('DOMContentLoaded', function() {
     initializeTabs();
     renderBooks(booksData);
     renderReviews();
-
     document.getElementById('searchInput').addEventListener('input', filterBooks);
     document.getElementById('categoryFilter').addEventListener('change', filterBooks);
     document.getElementById('sellBookForm').addEventListener('submit', handleSellBookForm);
     document.getElementById('contactForm').addEventListener('submit', handleContactForm);
-
     console.log('CampusX application initialized successfully!');
 });

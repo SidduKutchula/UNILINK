@@ -1,0 +1,346 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: #e9eff962;
+  padding: 2rem 1rem;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #1e40af;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  padding-bottom: 2rem;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(300px, 1fr)); 
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    transform: translateY(-3px) scale(1.01);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; 
+    padding-bottom: 20px; 
+}
+
+
+.job-card {
+    scroll-snap-align: start;
+}
+
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(6, minmax(350px, 1fr)); 
+    }
+}
+/* .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  transform: translateY(-3px) scale(1.01);
+}
+
+.job-card {
+  background: #eff1f4;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  color: #1f2937;
+  position: relative;
+  
+}  */
+.job-card:hover{
+  box-shadow: 0 4px 12px rgba(103, 101, 101, 0.5);
+  transform: translateY(-3px) scale(1.01);
+}
+
+.badge {
+  background-color: #fab2b2;
+  color: #991b1b;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  display: inline-block;
+}
+.badge:hover{
+  background-color: #fca5a5;
+}
+.verified {
+  color: #16a34a;
+  font-size: 0.85rem;
+  font-weight: bold;
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin: 0.75rem 0 0.25rem;
+}
+
+.company {
+  color: #4b5563;
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+}
+
+.details {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-bottom: 0.3rem;
+}
+
+.salary {
+  color: #2563eb;
+  font-weight: bold;
+  margin-bottom: 0.8rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.tag {
+  background: #ede9fe;
+  color: #4f46e5;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.75rem;
+  border-radius: 999px;
+  font-weight: 600;
+}
+.tag:hover{
+  background-color: #8d8ac3;
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #4b5563;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.apply-btn {
+  display: block;
+  background: #2563eb;
+  color: white;
+  text-align: center;
+  padding: 0.75rem;
+  border-radius: 999px;
+  font-weight: bold;
+  text-decoration: none;
+  margin-bottom: 0.75rem;
+}
+.apply-btn:hover{
+  background-color:#4475e0;
+  transform: translateY(-3px) scale(1.01);
+}
+.apply-btn1, .apply-btn2{
+  display: block;
+  background: #2563eb;
+  color: white;
+  text-align: center;
+  padding: 0.75rem;
+  border-radius: 999px;
+  font-weight: bold;
+  text-decoration: none;
+  margin-bottom: 0.75rem;
+}
+.apply-btn:hover{
+  background-color:#4475e0;
+  transform: translateY(-3px) scale(1.01);
+}
+
+
+.save-link {
+  display: block;
+  background: white; /* or any dark shade you prefer */
+  color: black;
+  text-align: center;
+  padding: 0.75rem;
+  border-radius: 999px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+.save-link:hover{
+  background-color:#fed5d5;
+  transform: translateY(-3px) scale(1.01);
+}
+
+
+.features-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem 1rem;
+  background: #f5f7fa;
+}
+
+.feature-column {
+  /* flex: 1;
+  min-width: 280px;
+  max-width: 450px; */
+  
+  flex: 1;
+  min-width: 280px;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+
+.feature-column h2 {
+  font-size: 1.8rem;
+  color: #1e293b;
+  font-weight: bold;
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.feature-card {
+  /* display: flex;
+  gap: 1rem;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  align-items: flex-start;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); */
+  display: flex;
+  gap: 1rem;
+  background: #d7e3f2;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 1rem;
+  align-items: flex-start;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  min-height: 120px;
+  min-width: 160px; /* ⬅ increase this value as needed */
+  flex: 1;
+  flex-direction: row;
+}
+.feature-card:hover{
+  background-color:#e2e3e4;
+  transform: translateY(-5px) scale(1.01);
+}
+.icon {
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: white;
+  flex-shrink: 0;
+}
+
+.purple {
+  background: #1e40af;
+}
+
+.blue {
+  background:#1e40af;
+}
+.feature-card strong{
+    font-size: 15px;
+    padding: 2rem;
+}
+
+.feature-card small {
+  font-size: 0.8rem;
+  color: #374151;
+}
+
+.tech-section {
+  background-color: #ffffff;
+  padding: 2rem 1rem;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 900px;
+  margin: 2rem auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.tech-section h2 {
+  font-size: 1.5rem;
+  color: #1d4ed8;
+  margin-bottom: 1rem;
+}
+
+.tech-section h3 {
+  font-size: 1.2rem;
+  margin: 1rem 0 0.5rem;
+  color: #334155;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+.tech-tags span:hover {
+  background-color: #9f67ff; /* lighter purple */
+  cursor: pointer;
+}
+
+
+.tech-tags span {
+  background-color: #6366f1;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.strengths {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.strengths div {
+  flex: 1;
+  min-width: 200px;
+}
+
+.strengths h4 {
+  font-weight: 700;
+  color: #4f46e5;
+  margin-bottom: 0.3rem;
+  font-size: 1.1rem;
+}
+
+.strengths p {
+  font-size: 0.9rem;
+  color: #4b5563;
+}

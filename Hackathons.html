@@ -8,20 +8,49 @@
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
 <body>
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="nav-left">
+                <div class="logo">
+                    <a href="home.html"><img src="./unilink.jpg" alt="UniLink Logo" onerror="this.onerror=null;this.src='https://placehold.co/40x40/E0E7FF/4F46E5?text=UL';" /></a>
+                    <span class="logoname">UniLink</span>
+                </div>
+            </div>
+            <button class="nav-toggle" id="nav-toggle">☰</button>
+            <div class="nav-right" id="nav-section">
+                <nav class="nav-links">
+                    <a href="home.html">Home</a>
+                    <a href="Dashboard.html">Dashboard</a>
+                    <a href="Ideahub.html">IdeaHub</a>
+                    <div class="dropdown">
+                        <a href="Campusnetwork.html" class="dropdown-toggle">CampusConnect ▾</a>
+                        <div class="dropdown-menu">
+                            <a href="campusconnect1.html">Campus Network</a>
+                            <a href="ishipresume.html">Resume Building</a>
+                        </div>
+                    </div>
+                    <a href="Hackathons.html">Hackathons</a>
+                    <a href="campusX.html">CampusX</a>
+                </nav>
+                <div class="auth-buttons">
+                    <a href="darkmode.html" class="signup">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
     <div class="container">
-        <!-- Header -->
         <header class="header">
             <h1 class="title">Hackathons & Competitions</h1>
             <p class="subtitle">Participate in live coding competitions and hackathons from top platforms</p>
         </header>
 
-        <!-- Live Events -->
         <section class="section">
             <h2 class="section-title">
                 <i data-lucide="zap" class="icon live-icon"></i>
                 Live Events
                 <span class="live-badge">LIVE</span>
-                </h2>
+            </h2>
             
             <div class="live-events-grid">
                 <div class="card live-card">
@@ -32,7 +61,7 @@
                                     <div class="live-dot"></div>
                                     AI Innovation Challenge
                                 </h3>
-                                <p class="event-platform">
+                                <p class="event-platform" data-platform="HackerRank">
                                     <i data-lucide="code" class="small-icon"></i>
                                     HackerRank
                                 </p>
@@ -63,11 +92,11 @@
                         </div>
 
                         <div class="button-group">
-                            <button class="btn btn-primary">
+                            <button class="btn btn-primary" data-action="join">
                                 <i data-lucide="external-link" class="small-icon"></i>
                                 Join Now
                             </button>
-                            <button class="btn btn-outline">
+                            <button class="btn btn-outline" data-action="set-reminder">
                                 <i data-lucide="bell" class="small-icon"></i>
                             </button>
                         </div>
@@ -81,7 +110,7 @@
                                     <div class="live-dot"></div>
                                     Web3 Developer Contest
                                 </h3>
-                                <p class="event-platform">
+                                <p class="event-platform" data-platform="CodeChef">
                                     <i data-lucide="code" class="small-icon"></i>
                                     CodeChef
                                 </p>
@@ -112,11 +141,11 @@
                         </div>
 
                         <div class="button-group">
-                            <button class="btn btn-primary">
+                            <button class="btn btn-primary" data-action="join">
                                 <i data-lucide="external-link" class="small-icon"></i>
                                 Join Now
                             </button>
-                            <button class="btn btn-outline">
+                            <button class="btn btn-outline" data-action="set-reminder">
                                 <i data-lucide="bell" class="small-icon"></i>
                             </button>
                         </div>
@@ -124,13 +153,13 @@
                 </div>
             </div>
         </section>
+
         <section class="section">
             <h2 class="section-title">
                 <i data-lucide="calendar" class="icon upcoming-icon"></i>
                 Upcoming Events
             </h2>
             
-            <!-- Countdown Timer -->
             <div class="card countdown-card">
                 <div class="card-header">
                     <h3 class="countdown-title">Next Event: Mobile App Hackathon</h3>
@@ -156,7 +185,7 @@
                         </div>
                     </div>
                     <div class="countdown-button">
-                        <button class="btn btn-primary btn-large">
+                        <button class="btn btn-primary btn-large" data-action="set-reminder-countdown">
                             <i data-lucide="bell" class="small-icon"></i>
                             Set Reminder
                         </button>
@@ -169,7 +198,7 @@
                         <div class="event-header">
                             <div>
                                 <h3 class="event-title">Mobile App Hackathon</h3>
-                                <p class="event-platform">
+                                <p class="event-platform" data-platform="GFG">
                                     <i data-lucide="code" class="small-icon"></i>
                                     GFG
                                 </p>
@@ -205,8 +234,8 @@
                         </div>
 
                         <div class="button-group">
-                            <button class="btn btn-primary">Register</button>
-                            <button class="btn btn-outline">
+                            <button class="btn btn-primary" data-action="register">Register</button>
+                            <button class="btn btn-outline" data-action="set-reminder">
                                 <i data-lucide="bell" class="small-icon"></i>
                             </button>
                         </div>
@@ -217,7 +246,7 @@
                         <div class="event-header">
                             <div>
                                 <h3 class="event-title">Data Science Competition</h3>
-                                <p class="event-platform">
+                                <p class="event-platform" data-platform="LeetCode">
                                     <i data-lucide="code" class="small-icon"></i>
                                     LeetCode
                                 </p>
@@ -253,8 +282,8 @@
                         </div>
 
                         <div class="button-group">
-                            <button class="btn btn-primary">Register</button>
-                            <button class="btn btn-outline">
+                            <button class="btn btn-primary" data-action="register">Register</button>
+                            <button class="btn btn-outline" data-action="set-reminder">
                                 <i data-lucide="bell" class="small-icon"></i>
                             </button>
                         </div>
@@ -265,7 +294,7 @@
                         <div class="event-header">
                             <div>
                                 <h3 class="event-title">Cybersecurity CTF</h3>
-                                <p class="event-platform">
+                                <p class="event-platform" data-platform="HackerRank">
                                     <i data-lucide="code" class="small-icon"></i>
                                     HackerRank
                                 </p>
@@ -301,8 +330,8 @@
                         </div>
 
                         <div class="button-group">
-                            <button class="btn btn-primary">Register</button>
-                            <button class="btn btn-outline">
+                            <button class="btn btn-primary" data-action="register">Register</button>
+                            <button class="btn btn-outline" data-action="set-reminder">
                                 <i data-lucide="bell" class="small-icon"></i>
                             </button>
                         </div>
@@ -310,6 +339,7 @@
                 </div>
             </div>
         </section>
+
         <section class="section">
             <h2 class="section-title">
                 <i data-lucide="trophy" class="icon trophy-icon"></i>
@@ -364,7 +394,7 @@
                                 <span class="winner-prize">$2,000</span>
                             </div>
                         </div>
-                        <button class="btn btn-outline full-width">
+                        <button class="btn btn-outline full-width" data-action="view-results">
                             <i data-lucide="external-link" class="small-icon"></i>
                             View Results
                         </button>
@@ -418,7 +448,7 @@
                             </div>
                         </div>
                         
-                        <button class="btn btn-outline full-width">
+                        <button class="btn btn-outline full-width" data-action="view-results">
                             <i data-lucide="external-link" class="small-icon"></i>
                             View Results
                         </button>
@@ -427,6 +457,6 @@
             </div>
         </section>
     </div>
-    <script src="hackathons.js"></script>
+    <script src="Hackathons.js"></script>
 </body>
 </html>

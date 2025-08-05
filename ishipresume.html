@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CampusConnect Resume Builder</title>
+  <link rel="stylesheet" href="ishipresume.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+  
+  <div class="container">
+    <h1><span class="highlight">CampusConnect</span> Resume Builder</h1>
+    <p class="subtitle">Create professional resumes with our easy-to-use builder and beautiful templates</p>
+
+    <div class="steps">
+      <span style="color: #4a90e2;"><i class="fas fa-user-circle" style="color: #4a90e2;"></i> Fill Information</span>
+      <span><i class="fas fa-file-alt"></i> Choose Template</span>
+      <span><i class="fas fa-download"></i> Preview & Download</span>
+    </div>
+    <h2 class="main-heading">Build Your Resume</h2>
+    <p class="form-instruction">Fill out your information to create a professional resume</p>
+
+    <form class="resume-form">
+<!-- Personal Information -->
+<section class="form-section">
+  <h3 class="section-title">
+    <span><i class="fas fa-user"></i> Personal Information</span>
+  </h3>
+  <div class="grid-2x3">
+    <div><label>Full Name *</label><input type="text" placeholder="John Smith" required></div>
+    <div><label>Email *</label><input type="email" placeholder="john.smith@university.edu" required></div>
+    <div><label>Phone</label><input type="text" placeholder="(555) 123-4567"></div>
+    <div><label>Address</label><input type="text" placeholder="City, State"></div>
+    <div><label>LinkedIn</label><input type="text" placeholder="linkedin.com/in/yourprofile"></div>
+    <div><label>Portfolio/Website</label><input type="text" placeholder="yourwebsite.com"></div>
+  </div>
+</section>
+
+<!-- Professional Summary -->
+<section class="form-section">
+  <h3 class="section-title">
+    <span><i class="fas fa-file-alt"></i> Professional Summary</span>
+  </h3>
+  <label>Summary</label>
+  <textarea placeholder="Write a brief professional summary highlighting your key skills and experiences..."></textarea>
+</section>
+
+<!-- Education -->
+<section class="form-section">
+  <h3 class="section-title">
+    <span><i class="fas fa-graduation-cap"></i> Education</span>
+    <button type="button" class="add-button">+ Add Education</button>
+  </h3>
+  <div class="education-container">
+    <div class="grid-2x2 edu-entry">
+      <div><label>Degree *</label><input type="text" required></div>
+      <div><label>Institution *</label><input type="text" required></div>
+      <div><label>Graduation Year</label><input type="text"></div>
+      <div><label>GPA (Optional)</label><input type="text"></div>
+    </div>
+    <div class="grid-2x2 edu-entry hidden">
+      <!-- Duplicate education fields -->
+      <div><label>Degree *</label><input type="text" required></div>
+      <div><label>Institution *</label><input type="text" required></div>
+      <div><label>Graduation Year</label><input type="text"></div>
+      <div><label>GPA (Optional)</label><input type="text"></div>
+    </div>
+    <div class="grid-2x2 edu-entry hidden">
+      <!-- Another duplicate -->
+      <div><label>Degree *</label><input type="text" required></div>
+      <div><label>Institution *</label><input type="text" required></div>
+      <div><label>Graduation Year</label><input type="text"></div>
+      <div><label>GPA (Optional)</label><input type="text"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Experience -->
+      <section class="form-section">
+        <h3 class="section-title">
+          <span><i class="fas fa-briefcase"></i> Experience</span>
+          <button type="button" class="add-button">+ Add Experience</button>
+        </h3>
+        <div class="experience-container">
+          <div class="grid-2x2 exp-entry">
+            <div><label>Job Title *</label><input type="text" required></div>
+            <div><label>Company *</label><input type="text" required></div>
+            <div><label>Duration</label><input type="text"></div>
+            <div><label>Description</label><input type="text"></div>
+          </div>
+          <div class="grid-2x2 exp-entry hidden">
+            <div><label>Job Title *</label><input type="text" required></div>
+            <div><label>Company *</label><input type="text" required></div>
+            <div><label>Duration</label><input type="text"></div>
+            <div><label>Description</label><input type="text"></div>
+          </div>
+          <div class="grid-2x2 exp-entry hidden">
+            <div><label>Job Title *</label><input type="text" required></div>
+            <div><label>Company *</label><input type="text" required></div>
+            <div><label>Duration</label><input type="text"></div>
+            <div><label>Description</label><input type="text"></div>
+          </div>
+        </div>
+      </section>
+<!-- Skills -->
+<section class="form-section">
+  <h3 class="section-title">
+    <span><i class="fas fa-tools"></i> Skills</span>
+  </h3>
+  <label>Skills (comma-separated)</label>
+  <input type="text" placeholder="JavaScript, React, Python, Machine Learning, Project Management" required>
+</section>
+
+<!-- Projects -->
+<section class="form-section">
+  <h3 class="section-title">
+    <span><i class="fas fa-project-diagram"></i> Projects</span>
+    <button type="button" class="add-button">+ Add Project</button>
+  </h3>
+  <div class="project-container">
+    <div class="project-grid proj-entry">
+      <div><label>Project Name *</label><input type="text" required></div>
+      <div><label>Technologies Used</label><input type="text"></div>
+      <div><label>Description</label><textarea></textarea></div>
+    </div>
+    <div class="project-grid proj-entry hidden"><div class="project-grid proj-entry">
+      <div><label>Project Name *</label><input type="text" required></div>
+      <div><label>Technologies Used</label><input type="text"></div>
+      <div><label>Description</label><textarea></textarea></div>
+    </div></div>
+    <div class="project-grid proj-entry hidden"><div class="project-grid proj-entry">
+      <div><label>Project Name *</label><input type="text" required></div>
+      <div><label>Technologies Used</label><input type="text"></div>
+      <div><label>Description</label><textarea></textarea></div>
+    </div></div>
+  </div>
+</section>
+  <div class="footer">
+  <button class="back-btn" onclick="window.location.href='home.html'">← Back to Home</button>
+  <div class="right-buttons">
+  <button class="generate-btn" onclick="window.location.href='templates.html'">Continue to Templates</button>
+  </div>
+</div>
+</form>
+  </div>
+  <script>
+  // Generic function to reveal next hidden section
+  function revealNextSection(containerSelector, sectionClass) {
+    const container = document.querySelector(containerSelector);
+    const sections = container.querySelectorAll(`.${sectionClass}`);
+    for (let sec of sections) {
+      if (sec.classList.contains('hidden')) {
+        sec.classList.remove('hidden');
+        break;
+      }
+    }
+  }
+
+  // Event listeners for each add button
+  document.querySelector('.add-button:nth-of-type(1)').addEventListener('click', function() {
+    revealNextSection('.education-container', 'edu-entry');
+  });
+
+  document.querySelector('.add-button:nth-of-type(2)').addEventListener('click', function() {
+    revealNextSection('.experience-container', 'exp-entry');
+  });
+
+  document.querySelector('.add-button:nth-of-type(3)').addEventListener('click', function() {
+    revealNextSection('.project-container', 'proj-entry');
+  });
+</script>
+
+</body>
+</html>`

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IdeaHub</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qYDKfCxa3eBvV/yN5T7Mv7bV8g8e5l5j5s5/66kP7w==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+<link rel="stylesheet" href="Ideahub.css">
+<script>
+function toggleTheme(){
+const body=document.body;
+body.classList.toggle('dark-theme');
+const currentTheme=body.classList.contains('dark-theme')?'dark':'light';
+localStorage.setItem('theme',currentTheme);
+}
+document.addEventListener('DOMContentLoaded',()=>{
+const savedTheme=localStorage.getItem('theme');
+if(savedTheme==='dark'){
+document.body.classList.add('dark-theme');
+}
+});
+</script>
+</head>
+<body class="bg-blue-50 text-black-500">
+<header class="navbar">
+        <div class="navbar-container">
+            <div class="nav-left">
+                <div class="logo">
+                    <a href="home.html"><img src="./unilink.jpg" alt="UniLink Logo" onerror="this.onerror=null;this.src='https://placehold.co/40x40/E0E7FF/4F46E5?text=UL';" /></a>
+                    <span class="logoname">UniLink</span>
+                </div>
+            </div>
+            <button class="nav-toggle" id="nav-toggle">☰</button>
+            <div class="nav-right" id="nav-section">
+                <nav class="nav-links">
+                    <a href="home.html">Home</a>
+                    <a href="Dashboard.html">Dashboard</a>
+                    <a href="Ideahub.html">IdeaHub</a>
+                    <div class="dropdown">
+                        <a href="Campusnetwork.html" class="dropdown-toggle">CampusConnect ▾</a>
+                        <div class="dropdown-menu">
+                            <a href="campusconnect1.html">Campus Network</a>
+                            <a href="ishipresume.html">Resume Building</a>
+                        </div>
+                    </div>
+                    <a href="Hackathons.html">Hackathons</a>
+                    <a href="campusX.html">CampusX</a>
+                </nav>
+                <div class="auth-buttons">
+                    <a href="darkmode.html" class="signup">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+<div class="max-w-6xl mx-auto py-10 px-4">
+<header>
+<h1 class="text-6xl font-bold text-blue-600">IdeaHub</h1>
+<p class="text-gray-600 font-bold mt-2">🚀 Launch your ideas, 🎨 share your creativity, and 🤝 collaborate with others!</p>
+<div class="idea-box flex justify-center gap-4 mt-6">
+<button class="bg-white font-bold border px-4 py-2 rounded-full shadow-lg">🔍 Explore Ideas</button>
+<button onclick="navigateTo('submit.html')" class="button-2 bg-purple-700 text-white font-bold px-4 py-2 rounded-full shadow-lg">➕ Submit Idea</button>
+</div>
+</header>
+<div class="filter flex flex-col sm:flex-row justify-between items-center mb-1">
+<input type="text" placeholder="🔍 Search ideas, tags, or authors..." class="search-bar w-full sm:w-2/3 px-4 py-2 border rounded mb-4 text-align:center sm:mb-0">
+<select onclick="OPEN()" class="filter-options border px-3 py-2 rounded">
+<option>All Categories</option>
+<option>Technology</option>
+<option>Environment</option>
+<option>Health</option>
+<option>Education</option>
+<option>Design</option>
+</select>
+</div>
+<h2 class="featured-ideas text-xl font-semibold mb-4">⭐ Featured Ideas</h2>
+<div class="ideas-grid">
+<div class="idea-card">
+<div class="level-badge">Advanced</div>
+<h3 class="text-base font-semibold">💡AI-Powered Study Planner</h3>
+<div class="meta">👤 Sarah Chen • Computer Science</div>
+<div class="description">An intelligent app that creates personalized study schedules based on your learning style, exam dates, and course difficulty.</div>
+<div class="tags">
+<div class="tag bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded">🤖AI</div>
+<div class="tag bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded">📝Education</div>
+<div class="tag bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded">🧠Machine Learning</div>
+</div>
+<div class="stats">❤ 45 | 💬 12 | 📅 15/1/2024</div>
+<div class="actions">
+<button class="btn">♡</button>
+<button class="btn">🔗</button>
+</div>
+</div>
+<div class="idea-card">
+<div class="level-badge">Advanced</div>
+<h3 class="text-base font-semibold">💡AR Campus Navigation</h3>
+<div class="meta">👤 Emma Wilson • Computer Science</div>
+<div class="description">Augmented reality app to help new students navigate campus buildings and find classrooms, labs, and facilities.</div>
+<div class="tags">
+<div class="tag bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded">🌐AR</div>
+<div class="tag bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded">🧭 Navigation</div>
+<div class="tag bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded">📱 Mobile App</div>
+</div>
+<div class="stats">❤ 67 | 💬 19 | 📅 13/1/2024</div>
+<div class="actions">
+<button class="btn">♡</button>
+<button class="btn">🔗</button>
+</div>
+</div>
+<div class="idea-card">
+<div class="level-badge">Advanced</div>
+<h3 class="text-base font-semibold">💡Mental Health Support Bot</h3>
+<div class="meta">👤 David Kim • Psychology</div>
+<div class="description">A conversational AI that provides 24/7 mental health support and resources for students.</div>
+<div class="tags">
+<div class="tag bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded">🤖AI</div>
+<div class="tag bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded">🧘‍♂ Mental Health</div>
+<div class="tag bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded">💬Chatbot</div>
+</div>
+<div class="stats">❤ 89 | 💬 24 | 📅 12/1/2024</div>
+<div class="actions">
+<button class="btn">♡</button>
+<button class="btn">🔗</button>
+</div>
+</div>
+<div class="idea-card">
+<div class="level-badge">Advanced</div>
+<h3 class="text-base font-semibold">💡Smart Waste Management System</h3>
+<div class="meta">👤 Emma Wilson • Computer Science</div>
+<div class="description">AI-driven platform for optimizing waste collection and recycling processes...</div>
+<div class="tags">
+<div class="tag bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded">🤖AI</div>
+<div class="tag bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded">🚮Waste Management</div>
+<div class="tag bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded">♻Sustainability</div>
+</div>
+<div class="stats">❤ 89 | 💬 24 | 📅 12/1/2024</div>
+<div class="actions">
+<button class="btn">♡</button>
+<button class="btn">🔗</button>
+</div>
+</div>
+</div>
+<!-- All Ideas Section -->
+  <div class="min-h-screen  py-10">
+  <div class="max-w-6xl mx-auto px-4">
+     
+    <h1 class="all-ideas text-4xl font-bold mb-8">⚡ All Ideas</h1>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      
+      <!-- card-1 -->
+      <div class="cards bg-white p-5 rounded-lg shadow transition-transform hover:scale-105 hover:shadow-xl ">
+        <h3 class="div-heading text-base font-semibold">AI-Powered Study Planner</h3>
+        
+        <p class="text-xs text-gray-600 pt-2">by Sarah Chen<span class="difficultylevel text-sm bg-red-100 text-red-600 px-2 py-1 rounded ml-2">Advanced</span></p>
+      </br>
+        <p class="text-sm mt-1">An intelligent app that creates personalized study schedules based on your learning style, exam dates..</p>
+        <div class="mt-2 flex flex-wrap gap-2">
+          <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded">AI</span>
+          <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded">Education</span>
+          <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded">Machine Learning</span>
+        </div>
+        <button class="viewdetails bg-blue-700 text-white mt-4 px-3 py-1 rounded text-sm" onclick="navigateTo('idea-details.html')">View Details</button>
+      </div>
+      
+       <!--card-2-->
+       <div class="cards bg-white p-5 rounded-lg shadow transition-transform hover:scale-105 hover:shadow-xl">
+        <h3 class="div-heading text-base font-semibold">Campus Sustainability Tracker</h3>
+        <p class="text-xs text-gray-600 pt-2">by Mike Johnson    <span class="difficultylevel text-sm bg-yellow-100 text-yellow-600 px-2 py-1 rounded ml-2">Intermediate</span></p>
+       </br>
+        <p class="text-sm mt-1">A gamified platform to track and reduce campus carbon footprint through student challenges and green initiatives...</p>
+        <div class="mt-2 flex flex-wrap gap-2">
+          <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded">Sustainability</span>
+          <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded">AI</span>
+          <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded">Machine Learning</span>
+        </div>
+        <button class="viewdetails bg-blue-600 text-white mt-4 px-3 py-1 rounded text-sm" onclick="navigateTo('idea-details4.html')">View Details</button>
+      </div>
+      <!--card-3-->
+      <div class=" cards bg-white p-5 rounded-lg shadow transition-transform hover:scale-105 hover:shadow-xl">
+        <h3 class="div-heading text-base font-semibold">AR Campus Navigation</h3>
+        <p class="text-xs text-gray-600 pt-2">by Emma Wilson<span class="difficultylevel text-sm bg-red-100 text-red-600 px-2 py-1 rounded ml-2">Advanced</span></p>
+      </br>
+        <p class="text-sm mt-1">Augmented reality app to help new students navigate campus buildings and find classrooms easily.</p>
+        <div class="mt-2 flex flex-wrap gap-2">
+          <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded">AI</span>
+          <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded">Navigation</span>
+          <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded">Mobile App</span>
+        </div>
+        <button class="viewdetails bg-blue-600 text-white mt-4 px-3 py-1 rounded text-sm" onclick="navigateTo('idea-details1.html')">View Details</button>
+         
+      </div>
+      <!--card-4-->
+      <div class="cards bg-white p-5 rounded-lg shadow transition-transform hover:scale-105 hover:shadow-xl">
+        <h3 class="div-heading text-base font-semibold">Mental Health Support Bot</h3>
+        <p class="text-xs text-gray-600 pt-2">by David Kim<span class="difficultylevel text-sm bg-red-100 text-red-600 px-2 py-1 rounded ml-2">Advanced</span></p>
+      </br>
+        <p class="text-sm mt-1">A conversational AI that provides 24/7 mental health support and resources for students...</p>
+        <div class="mt-2 flex flex-wrap gap-2">
+          <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded">AI</span>
+          <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded">Mental Health</span>
+          <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded">ChatBot</span>
+        </div>
+        <button class="viewdetails bg-blue-600 text-white mt-4 px-3 py-1 rounded text-sm" onclick="navigateTo('idea-details2.html')">View Details</button>
+        
+      </div>
+      <!--card-5-->
+    
+      <div class="cards bg-white p-5 rounded-lg shadow transition-transform hover:scale-105 hover:shadow-xl">
+        <h3 class="div-heading text-base font-semibold">Smart Faculty Presence Tracker</h3>
+        <p class="text-xs text-gray-600 pt-2">by Yakanksha<span class="difficultylevel text-sm bg-red-100 text-red-600 px-2 py-1 rounded ml-2 text-align:end">Advanced</span></p>
+      </br>
+        <p class="text-sm mt-1">AI-powered tool for tracking faculty attendance and engagement in real-time.</p>
+        <div class="mt-2 flex flex-wrap gap-2">
+          <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded">AI</span>
+          <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded">Education</span>
+          <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded">Machine Learning</span>
+        </div>
+        <button class="viewdetails bg-blue-600 text-white mt-4 px-3 py-1 rounded text-sm" onclick="navigateTo('idea-details6.html')">View Details</button>
+        
+      </div>
+      <div class="cards bg-white p-5 rounded-lg shadow transition-transform hover:scale-105 hover:shadow-xl">
+        <h3 class="div-heading text-base font-semibold">Medical Diagnosis Assistant</h3>
+        <div class="sub-div">
+        <p class="text-xs text-gray-600 pt-2">by Albert Thompson<span class="difficultylevel text-sm bg-red-100 text-red-600 px-2 py-1 rounded ml-2 hover:bg-red-200">Advanced</span></p>
+        </div>
+      </br>
+        <p class="text-sm mt-1">AI-powered tool for assisting medical professionals in diagnosing diseases.</p>
+        <div class="mt-2 flex flex-wrap gap-2">
+          <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded">AI</span>
+          <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded">Healthcare</span>
+          <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded">Diagnostics</span>
+        </div>
+        <button class="viewdetails bg-blue-600 text-white mt-4 px-3 py-1 rounded text-sm"  onclick="navigateTo('medicaldiagnosis.html')">View Details</button>
+        
+      </div>
+    </div>
+  </div>
+ </div>
+
+<!-- Removed blank lines here -->
+<!-- Retains same structure -->
+<!-- Your other cards continue in same compressed format -->
+<!-- Follow same alignment rule throughout -->
+<script>
+document.querySelector(".filter-options").style.left="-200px";
+document.querySelector(".filter-options").style.transition="left 0.5s linear";
+function OPEN(){
+document.getElementsByClassName("filter-options")[0].style.left="10px";
+}
+function navigateTo(path){
+window.location.href=path;
+}
+</script>
+<script>
+function toggleMenu(){
+const nav=document.getElementById('nav-section');
+nav.classList.toggle('active');
+}
+document.addEventListener('DOMContentLoaded',function(){
+document.getElementById('nav-toggle').addEventListener('click',toggleMenu);
+});
+</script>
+</body>
+</html>

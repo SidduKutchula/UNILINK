@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Job Opportunities</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome is already loaded with the user's provided script -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        /*
+        * User's provided CSS for light mode
+        */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background: #e9eff962;
+            padding: 2rem 1rem;
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #1e40af;
+            margin-bottom: 2rem;
+            margin-top: 2rem;
+            padding-bottom: 2rem;
+        }
+        
+        /* Carousel-specific styles */
+        .carousel-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+            padding: 0 40px; /* Space for buttons */
+        }
+
+        .carousel-wrapper {
+            display: flex;
+            gap: 4rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Hide scrollbar for Firefox */
+            margin-bottom: 2rem;
+        }
+
+        .carousel-wrapper::-webkit-scrollbar {
+            display: none; /* Hide scrollbar for Chrome, Safari, etc. */
+        }
+
+        .job-card {
+            min-width: 260px; /* Ensure cards have a fixed size for snapping */
+            flex-shrink: 0;
+            scroll-snap-align: start;
+            background: #eff1f4;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            color: #1f2937;
+            position: relative;
+            transition: all 0.3s ease-in-out;
+        } 
+        
+        .job-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            z-index: 10;
+            transition: background 0.3s ease;
+        }
+        
+        .carousel-btn.prev {
+            left: 0;
+        }
+
+        .carousel-btn.next {
+            right: 0;
+        }
+        
+        .carousel-btn:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .carousel-btn:disabled {
+            background: rgba(0, 0, 0, 0.2);
+            cursor: not-allowed;
+        }
+        
+        /* End of carousel styles */
+        
+        .badge {
+            background-color: #fab2b2;
+            color: #991b1b;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.3rem 0.8rem;
+            border-radius: 999px;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        
+        .badge:hover {
+            background-color: #fca5a5;
+        }
+        
+        .verified {
+            color: #16a34a;
+            font-size: 0.85rem;
+            font-weight: bold;
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+        }
+        
+        .title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 0.75rem 0 0.25rem;
+        }
+        
+        .company {
+            color: #4b5563;
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
+        }
+        
+        .details {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-bottom: 0.3rem;
+        }
+        
+        .salary {
+            color: #2563eb;
+            font-weight: bold;
+            margin-bottom: 0.8rem;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 1rem;
+        }
+        
+        .tag {
+            background: #ede9fe;
+            color: #4f46e5;
+            padding: 0.3rem 0.6rem;
+            font-size: 0.75rem;
+            border-radius: 999px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        
+        .tag:hover {
+            background-color: #d8cfff;
+        }
+        
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: #4b5563;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        /* New container for the buttons to be side-by-side */
+        .button-container {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .apply-btn, .save-link {
+            flex-grow: 1; /* Make buttons expand to fill space */
+            flex-basis: 0;
+            text-align: center;
+            padding: 0.75rem;
+            border-radius: 999px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            white-space: nowrap; /* Prevent button text from wrapping */
+            cursor: pointer;
+        }
+
+        .apply-btn {
+            background: #2563eb;
+            color: white;
+            border: 1px solid transparent;
+        }
+
+        .apply-btn:hover {
+            background-color: #1e40af;
+            transform: translateY(-2px);
+        }
+        
+        .save-link {
+            background: white;
+            color: black;
+            border: 1px solid #d1d5db;
+        }
+        
+        .save-link:hover {
+            background-color: #f3f4f6;
+            transform: translateY(-2px);
+        }
+        
+        .features-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            /* Increased gap between columns for more separation */
+            gap: 8rem; 
+            padding: 2rem 1rem;
+            background: #f5f7fa;
+            /* Added top margin to separate this section from the one above it */
+            margin-top: 4rem; 
+        }
+        
+        .feature-column {
+            flex: 1;
+            /* Increased min/max width for larger columns */
+            min-width: 320px; 
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            /* Added margin to separate the columns visually */
+            margin-bottom: 2rem; 
+        }
+        
+        .feature-column h2 {
+            font-size: 1.8rem;
+            color: #1e293b;
+            font-weight: bold;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 2rem;
+        }
+
+        .feature-card {
+            display: flex;
+            gap: 1rem;
+            background: #d7e3f2;
+            border-radius: 12px;
+            /* Increased padding for a larger size */
+            padding: 2.5rem; 
+            margin-bottom: 1rem;
+            align-items: flex-start;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            min-height: 120px;
+            min-width: 160px;
+            flex: 1;
+            flex-direction: row;
+            text-decoration: none; /* Remove underline from links */
+            color: inherit; /* Inherit text color */
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+        }
+        
+        .feature-card:hover {
+            background-color: #c9d8ec;
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .icon {
+            height: 2.5rem;
+            width: 2.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: white;
+            flex-shrink: 0;
+        }
+        
+        .purple {
+            background: #1e40af;
+        }
+        
+        .blue {
+            background: #1e40af;
+        }
+        
+        .feature-card strong {
+            font-size: 15px;
+            padding: 2rem;
+            color: #1e293b;
+        }
+        
+        .feature-card small {
+            font-size: 0.8rem;
+            color: #374151;
+        }
+        
+        .tech-section {
+            background-color: #ffffff;
+            padding: 2rem 1rem;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 900px;
+            margin: 2rem auto;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .tech-section h2 {
+            font-size: 1.5rem;
+            color: #1d4ed8;
+            margin-bottom: 1rem;
+        }
+        
+        .tech-section h3 {
+            font-size: 1.2rem;
+            margin: 1rem 0 0.5rem;
+            color: #334155;
+        }
+        
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .tech-tags span {
+            background-color: #6366f1;
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .tech-tags span:hover {
+            background-color: #4f46e5;
+            cursor: pointer;
+        }
+        
+        .strengths {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        
+        .strengths div {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .strengths h4 {
+            font-weight: 700;
+            color: #4f46e5;
+            margin-bottom: 0.3rem;
+            font-size: 1.1rem;
+        }
+        
+        .strengths p {
+            font-size: 0.9rem;
+            color: #4b5563;
+        }
+
+        /* Dynamic content styles */
+        #dynamic-content-container {
+            max-width: 900px;
+            margin: 2rem auto;
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            display: none;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        #dynamic-content-container h2 {
+            font-size: 2rem;
+            color: #1e40af;
+        }
+
+        #dynamic-content-container p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #374151;
+        }
+        
+        #back-button {
+            display: inline-block;
+            background: #6b7280;
+            color: white;
+            text-align: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: 999px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            width: fit-content;
+            transition: background-color 0.3s ease;
+        }
+
+        #back-button:hover {
+            background-color: #4b5563;
+        }
+
+        /* Message Box styles */
+        #message-box {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4f46e5;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            z-index: 1000;
+        }
+        .back-button-container {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.back-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: #0056b3;
+}
+        /* Extra margin between the two grids */
+        .extra-grid-margin {
+            margin-top: 4rem; 
+        }
+
+        /*
+        * Dark mode styles based on user's request
+        */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #1a202c;
+                color: #e2e8f0;
+            }
+
+            h1 {
+                color: #9f7aea;
+            }
+
+            .job-card {
+                background: #2d3748;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                color: #e2e8f0;
+            }
+
+            .job-card:hover {
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            }
+
+            .badge {
+                background-color: #f6ad55;
+                color: #2d3748;
+            }
+
+            .badge:hover {
+                background-color: #ecc94b;
+            }
+
+            .verified {
+                color: #48bb78;
+            }
+
+            .title {
+                color: #9f7aea;
+            }
+
+            .company {
+                color: #a0aec0;
+            }
+
+            .details {
+                color: #cbd5e0;
+            }
+
+            .salary {
+                color: #63b3ed;
+            }
+
+            .tag {
+                background: #4a5568;
+                color: #9f7aea;
+            }
+
+            .tag:hover {
+                background-color: #6366f1;
+            }
+
+            .footer {
+                color: #a0aec0;
+            }
+
+            .button-container {
+                /* No changes needed here, flex properties are fine */
+            }
+
+            .apply-btn {
+                background: #9f7aea;
+                color: #1a202c;
+                border: 1px solid #9f7aea;
+            }
+
+            .apply-btn:hover {
+                background-color: #b794f4;
+            }
+
+            .save-link {
+                background: #4a5568;
+                color: #e2e8f0;
+                border: 1px solid #4a5568;
+            }
+
+            .save-link:hover {
+                background-color: #667eea;
+            }
+
+            .features-container {
+                background: #2d3748;
+            }
+
+            .feature-column h2 {
+                color: #e2e8f0;
+            }
+
+            .feature-card {
+                background: #4a5568;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            .feature-card:hover {
+                background-color: #667eea;
+            }
+
+            .icon {
+                background: #9f7aea;
+            }
+
+            .purple {
+                background: #9f7aea;
+            }
+
+            .blue {
+                background: #63b3ed;
+            }
+
+            .feature-card strong {
+                color: #e2e8f0;
+            }
+            
+            .feature-card small {
+                color: #a0aec0;
+            }
+
+            .tech-section {
+                background-color: #2d3748;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            }
+
+            .tech-section h2 {
+                color: #9f7aea;
+            }
+
+            .tech-section h3 {
+                color: #cbd5e0;
+            }
+
+            .tech-tags span {
+                background-color: #63b3ed;
+                color: #1a202c;
+            }
+
+            .tech-tags span:hover {
+                background-color: #4299e1;
+            }
+
+            .strengths h4 {
+                color: #9f7aea;
+            }
+
+            .strengths p {
+                color: #a0aec0;
+            }
+
+            #dynamic-content-container {
+                background: #2d3748;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            }
+
+            #dynamic-content-container h2 {
+                color: #9f7aea;
+            }
+            
+            #dynamic-content-container p {
+                color: #e2e8f0;
+            }
+
+            #back-button {
+                background: #6b7280;
+                color: #e2e8f0;
+            }
+            
+            #back-button:hover {
+                background-color: #4a5568;
+            }
+
+            /* Carousel dark mode styles */
+            .carousel-btn {
+                background: rgba(255, 255, 255, 0.2);
+                color: #e2e8f0;
+            }
+
+            .carousel-btn:hover {
+                background: rgba(255, 255, 255, 0.4);
+            }
+
+            .carousel-btn:disabled {
+                background: rgba(255, 255, 255, 0.1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="main-content">
+        <h1>Latest Opportunities</h1>
+        <div class="carousel-container">
+            <div class="carousel-wrapper" id="carousel-wrapper">
+                <div class="job-card">
+                    <span class="badge">Internship</span>
+                    <span class="verified">✔ Verified</span>
+                    <div class="title">Frontend Developer Intern</div>
+                    <div class="company">TechStart Inc.</div>
+                    <div class="details">🕒 3 months • Remote</div>
+                    <div class="salary">💰 $1,500/month</div>
+                    <div class="tags">
+                        <span class="tag">React</span>
+                        <span class="tag">TypeScript</span>
+                        <span class="tag">CSS</span>
+                    </div>
+                    <div class="footer">
+                        <span>23 applicants</span>
+                        <span>Posted 2 days ago</span>
+                    </div>
+                    <div class="button-container">
+                        <a href="https://unstop.com/internships/frontend-developer-internship-persist-ventures-1527251" target="_blank" class="apply-btn">Apply Now</a>
+                        <div class="save-link">Save Opportunity</div>
+                    </div>
+                </div>
+                
+                <div class="job-card">
+                    <span class="badge">Research</span>
+                    <span class="verified">✔ Verified</span>
+                    <div class="title">Data Science Research Assistant</div>
+                    <div class="company">University Lab</div>
+                    <div class="details">🕒 6 months • On-campus</div>
+                    <div class="salary">💰 $2,000/month</div>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Machine Learning</span>
+                        <span class="tag">Statistics</span>
+                    </div>
+                    <div class="footer">
+                        <span>45 applicants</span>
+                        <span>Posted 1 week ago</span>
+                    </div>
+                    <div class="button-container">
+                        <a href="https://unstop.com/internships/data-scientist-internship-data-tech-alpha-private-limited-1531494" target="_blank" class="apply-btn">Apply Now</a>
+                        <div class="save-link">Save Opportunity</div>
+                    </div>
+                </div>
+                
+                <div class="job-card">
+                    <span class="badge">Internship</span>
+                    <span class="verified">✔ Verified</span>
+                    <div class="title">Mobile App Developer</div>
+                    <div class="company">StartupX</div>
+                    <div class="details">🕒 4 months • Hybrid</div>
+                    <div class="salary">💰 $1,800/month</div>
+                    <div class="tags">
+                        <span class="tag">React Native</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Firebase</span>
+                    </div>
+                    <div class="footer">
+                        <span>31 applicants</span>
+                        <span>Posted 3 days ago</span>
+                    </div>
+                    <div class="button-container">
+                        <a href="https://unstop.com/internships/mobile-app-developer-internship-go-extra-mile-1528925" target="_blank" class="apply-btn">Apply Now</a>
+                        <div class="save-link">Save Opportunity</div>
+                    </div>
+                </div>
+                
+                <div class="job-card">
+                    <span class="badge">Full-time</span>
+                    <span class="verified">✔ Verified</span>
+                    <div class="title">Backend Engineer</div>
+                    <div class="company">Innovate Solutions</div>
+                    <div class="details">🕒 Permanent • Hybrid</div>
+                    <div class="salary">💰 $80,000 - $100,000/year</div>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Django</span>
+                        <span class="tag">PostgreSQL</span>
+                    </div>
+                    <div class="footer">
+                        <span>10 applicants</span>
+                        <span>Posted 1 day ago</span>
+                    </div>
+                    <div class="button-container">
+                        <a href="#" target="_blank" class="apply-btn">Apply Now</a>
+                        <div class="save-link">Save Opportunity</div>
+                    </div>
+                </div>
+                
+                <div class="job-card">
+                    <span class="badge">Internship</span>
+                    <span class="verified">✔ Verified</span>
+                    <div class="title">UX/UI Designer Intern</div>
+                    <div class="company">Creative Minds Co.</div>
+                    <div class="details">🕒 6 months • Remote</div>
+                    <div class="salary">💰 $1,200/month</div>
+                    <div class="tags">
+                        <span class="tag">Figma</span>
+                        <span class="tag">User Research</span>
+                        <span class="tag">Prototyping</span>
+                    </div>
+                    <div class="footer">
+                        <span>52 applicants</span>
+                        <span>Posted 5 days ago</span>
+                    </div>
+                    <div class="button-container">
+                        <a href="#" target="_blank" class="apply-btn">Apply Now</a>
+                        <div class="save-link">Save Opportunity</div>
+                    </div>
+                </div>
+                
+                <div class="job-card">
+                    <span class="badge">Part-time</span>
+                    <span class="verified">✔ Verified</span>
+                    <div class="title">Marketing Analyst</div>
+                    <div class="company">Market Insights</div>
+                    <div class="details">  20 hours/week • Remote</div>
+                    <div class="salary">💰 $25/hour</div>
+                    <div class="tags">
+                        <span class="tag">SEO</span>
+                        <span class="tag">Content Strategy</span>
+                        <span class="tag">Analytics</span>
+                    </div>
+                    <div class="footer">
+                        <span>15 applicants</span>
+                        <span>Posted 3 days ago</span>
+                    </div>
+                    <div class="button-container">
+                        <a href="#" target="_blank" class="apply-btn">Apply Now</a>
+                        <div class="save-link">Save Opportunity</div>
+                    </div>
+                </div>
+            </div>
+            <!-- <button class="carousel-btn prev" id="prev-btn">‹</button>
+            <button class="carousel-btn next" id="next-btn">›</button> -->
+        </div>
+        
+        <div class="features-container">
+            <div class="feature-column">
+                <h2><span>🧑‍🎓</span> For Students</h2>
+                <a href="#" id="verified-profiles" class="feature-card">
+                    <div class="icon purple">👤</div>
+                    <div>
+                        <strong>Verified Profiles</strong><br />
+                        <small>College ID verification ensures authentic student profiles</small>
+                    </div>
+                </a>
+                <a href="#" id="digital-portfolio" class="feature-card">
+                    <div class="icon purple">📁</div>
+                    <div>
+                        <strong>Digital Portfolio</strong><br />
+                        <small>Showcase projects, skills, and achievements in one place</small>
+                    </div>
+                </a>
+                <a href="#" id="smart-filtering" class="feature-card">
+                    <div class="icon purple">🧠</div>
+                    <div>
+                        <strong>Smart Filtering</strong><br />
+                        <small>Find opportunities by duration, domain, stipend, and more</small>
+                    </div>
+                </a>
+                <a href="#" id="direct-chat" class="feature-card">
+                    <div class="icon purple">💬</div>
+                    <div>
+                        <strong>Direct Chat</strong><br />
+                        <small>Communicate directly with recruiters through secure messaging</small>
+                    </div>
+                </a>
+                <a href="#" id="interview-scheduler" class="feature-card">
+                    <div class="icon purple">📅</div>
+                    <div>
+                        <strong>Interview Scheduler</strong><br />
+                        <small>Book and manage interview slots with built-in reminders</small>
+                    </div>
+                </a>
+                <a href="#" id="application-tracker" class="feature-card">
+                    <div class="icon purple">📌</div>
+                    <div>
+                        <strong>Application Tracker</strong><br />
+                        <small>Track application status and get real-time updates</small>
+                    </div>
+                </a>
+            </div>
+
+            <div class="feature-column">
+                <h2><span>🏢</span> For Recruiters</h2>
+                <a href="#" id="verified-posting" class="feature-card">
+                    <div class="icon blue">✅</div>
+                    <div>
+                        <strong>Verified Posting</strong><br />
+                        <small>Post opportunities with company verification and branding</small>
+                    </div>
+                </a>
+                <a href="#" id="candidate-filtering" class="feature-card">
+                    <div class="icon blue">🧪</div>
+                    <div>
+                        <strong>Candidate Filtering</strong><br />
+                        <small>Filter by skills, CGPA, year, and project experience</small>
+                    </div>
+                </a>
+                <a href="#" id="portfolio-access" class="feature-card">
+                    <div class="icon blue">📂</div>
+                    <div>
+                        <strong>Portfolio Access</strong><br />
+                        <small>View complete student portfolios and download resumes</small>
+                    </div>
+                </a>
+                <a href="#" id="recruitment-chat" class="feature-card">
+                    <div class="icon blue">💬</div>
+                    <div>
+                        <strong>Recruitment Chat</strong><br />
+                        <small>Streamlined communication with shortlisted candidates</small>
+                    </div>
+                </a>
+                <a href="#" id="interview-management" class="feature-card">
+                    <div class="icon blue">📆</div>
+                    <div>
+                        <strong>Interview Management</strong><br />
+                        <small>Schedule interviews and send automated reminders</small>
+                    </div>
+                </a>
+                <a href="#" id="review-system" class="feature-card">
+                    <div class="icon blue">⭐</div>
+                    <div>
+                        <strong>Review System</strong><br />
+                        <small>Rate candidates and maintain recruitment history</small>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <section class="tech-section">
+            <h2>🛠 Built for Scale & Success</h2>
+            <h3>Tech Stack</h3>
+            <div class="tech-tags">
+                <span>React Native</span>
+                <span>Node.js</span>
+                <span>MongoDB</span>
+                <span>JWT Auth</span>
+                <span>Socket.IO</span>
+                <span>Firebase</span>
+                <span>Express</span>
+            </div>
+            <h3>Key Strengths</h3>
+            <div class="strengths">
+                <div>
+                    <h4>Full Stack</h4>
+                    <p>Complete end-to-end solution</p>
+                </div>
+                <div>
+                    <h4>Scalable</h4>
+                    <p>Built for university-wide deployment</p>
+                </div>
+                <div>
+                    <h4>Secure</h4>
+                    <p>College email verification & JWT auth</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Container for dynamic content, hidden by default -->
+    <div id="dynamic-content-container"></div>
+    
+    <!-- Custom message box for a non-blocking UI -->
+    <div id="message-box" style="display: none;"></div>
+    <div class="back-button-container">
+  <a href="campusconnect1.html" class="back-btn">← Back to Home</a>
+</div>
+
+    <script>
+        // Data for each feature to be displayed dynamically
+        const featuresData = {
+            "verified-profiles": {
+                title: "Verified Profiles",
+                content: "Our platform uses college ID verification to ensure every student profile is authentic. This builds trust within the network and provides recruiters with confidence in the candidates they are viewing."
+            },
+            "digital-portfolio": {
+                title: "Digital Portfolio",
+                content: "Students can easily create and manage a comprehensive digital portfolio to showcase their projects, skills, and academic achievements. This gives recruiters a holistic view of a candidate's abilities beyond a traditional resume."
+            },
+            "smart-filtering": {
+                title: "Smart Filtering",
+                content: "Our advanced filtering system allows students to find opportunities that perfectly match their needs. You can filter by internship duration, industry domain, stipend, and even location (remote, hybrid, on-campus)."
+            },
+            "direct-chat": {
+                title: "Direct Chat",
+                content: "Our secure, in-platform messaging system allows students to communicate directly with recruiters. This streamlines the hiring process and enables quick, efficient exchanges of information."
+            },
+            "interview-scheduler": {
+                title: "Interview Scheduler",
+                content: "Book and manage interview slots with our built-in scheduler. The system sends automated reminders to both students and recruiters, helping to prevent missed appointments and ensuring a smooth process."
+            },
+            "application-tracker": {
+                title: "Application Tracker",
+                content: "Students can track the real-time status of their applications. From 'Applied' to 'Shortlisted' and 'Hired,' you'll receive updates every step of the way, so you're always in the loop."
+            },
+            "verified-posting": {
+                title: "Verified Posting",
+                content: "Recruiters can post opportunities with company verification and branding. This ensures that every job listing is legitimate and helps companies build a strong employer brand among students."
+            },
+            "candidate-filtering": {
+                title: "Candidate Filtering",
+                content: "Recruiters can use our powerful search tools to filter candidates by specific criteria such as skills, CGPA, graduation year, and project experience. This helps you quickly find the perfect fit for your roles."
+            },
+            "portfolio-access": {
+                title: "Portfolio Access",
+                content: "Recruiters have access to complete student portfolios, which include projects, skill endorsements, and resumes. This allows for a more informed decision-making process than relying on a resume alone."
+            },
+            "recruitment-chat": {
+                title: "Recruitment Chat",
+                content: "Our platform provides a streamlined chat for communication with shortlisted candidates. This centralizes all your conversations and makes it easy to manage multiple applicants at once."
+            },
+            "interview-management": {
+                title: "Interview Management",
+                content: "Manage your entire interview process from a single dashboard. Schedule interviews, send automatic reminders, and keep track of candidate progress without leaving the platform."
+            },
+            "review-system": {
+                title: "Review System",
+                content: "Our review system allows recruiters to rate and leave feedback on candidates, maintaining a comprehensive recruitment history for future reference and team collaboration."
+            }
+        };
+
+        // Function to show a custom message box
+        function showMessage(text) {
+            const messageBox = document.getElementById('message-box');
+            messageBox.innerText = text;
+            messageBox.style.display = 'block';
+            messageBox.style.opacity = '1';
+            setTimeout(() => {
+                messageBox.style.opacity = '0';
+                setTimeout(() => {
+                    messageBox.style.display = 'none';
+                }, 300);
+            }, 3000);
+        }
+
+        // Consolidated event listeners for apply buttons
+        document.querySelectorAll(".apply-btn").forEach(button => {
+            button.addEventListener("click", function (event) {
+                event.preventDefault(); // Prevent default anchor behavior
+                const url = this.getAttribute('href');
+                if (url && url !== '#') {
+                    window.open(url, "_blank");
+                } else {
+                    showMessage("Link not available yet!");
+                }
+            });
+        });
+
+        // Consolidated event listeners for save links
+        document.querySelectorAll(".save-link").forEach(saveBtn => {
+            saveBtn.addEventListener("click", function () {
+                const card = saveBtn.closest(".job-card");
+                const title = card.querySelector(".title").innerText;
+                const company = card.querySelector(".company").innerText;
+                const details = card.querySelector(".details").innerText;
+                const salary = card.querySelector(".salary").innerText;
+                const opportunity = { title, company, details, salary };
+                let savedList = JSON.parse(localStorage.getItem("savedOpportunities")) || [];
+                const alreadySaved = savedList.some(job => job.title === title && job.company === company);
+                if (!alreadySaved) {
+                    savedList.push(opportunity);
+                    localStorage.setItem("savedOpportunities", JSON.stringify(savedList));
+                    showMessage("✅ Opportunity saved!");
+                } else {
+                    showMessage("⚠ Already saved.");
+                }
+            });
+        });
+// Event listeners for feature cards to trigger dynamic content
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('click', function(event) {
+                event.preventDefault();
+                const featureId = this.id;
+                const data = featuresData[featureId];
+
+                if (data) {
+                    // Hide the main content
+                    document.getElementById('main-content').style.display = 'none';
+
+                    // Display the dynamic content container
+                    const dynamicContainer = document.getElementById('dynamic-content-container');
+                    dynamicContainer.style.display = 'flex';
+                    dynamicContainer.innerHTML = ''; // Clear previous content
+
+                    // Create and append elements
+                    const backButton = document.createElement('a');
+                    backButton.id = 'back-button';
+                    backButton.textContent = '← Back to Home';
+                    backButton.href = '#';
+                    backButton.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        document.getElementById('main-content').style.display = 'block';
+                        dynamicContainer.style.display = 'none';
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    });
+                    
+                    const titleElement = document.createElement('h2');
+                    titleElement.textContent = data.title;
+                    
+                    const contentElement = document.createElement('p');
+                    contentElement.textContent = data.content;
+
+                    dynamicContainer.appendChild(backButton);
+                    dynamicContainer.appendChild(titleElement);
+                    dynamicContainer.appendChild(contentElement);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

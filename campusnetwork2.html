@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Job Opportunities</title>
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: #f5f7fa;
+  padding: 2rem 1rem;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #1e40af;
+  margin-bottom: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  transform: translateY(-3px) scale(1.01);
+}
+
+.job-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  color: #1f2937;
+  position: relative;
+  
+} 
+.job-card:hover{
+  box-shadow: 0 4px 12px rgba(103, 101, 101, 0.5);
+  transform: translateY(-3px) scale(1.01);
+}
+
+.badge {
+  background-color: #fab2b2;
+  color: #991b1b;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  display: inline-block;
+}
+.badge:hover{
+  background-color: #fca5a5;
+}
+.verified {
+  color: #16a34a;
+  font-size: 0.85rem;
+  font-weight: bold;
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin: 0.75rem 0 0.25rem;
+}
+
+.company {
+  color: #4b5563;
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+}
+
+.details {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-bottom: 0.3rem;
+}
+
+.salary {
+  color: #2563eb;
+  font-weight: bold;
+  margin-bottom: 0.8rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.tag {
+  background: #ede9fe;
+  color: #4f46e5;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.75rem;
+  border-radius: 999px;
+  font-weight: 600;
+}
+.tag:hover{
+  background-color: #8d8ac3;
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #4b5563;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.apply-btn {
+  display: block;
+  background: #2563eb;
+  color: white;
+  text-align: center;
+  padding: 0.75rem;
+  border-radius: 999px;
+  font-weight: bold;
+  text-decoration: none;
+  margin-bottom: 0.75rem;
+}
+.apply-btn:hover{
+  background-color:#4475e0;
+  transform: translateY(-3px) scale(1.01);
+}
+
+.save-link {
+  display: block;
+  background: white; /* or any dark shade you prefer */
+  color: black;
+  text-align: center;
+  padding: 0.75rem;
+  border-radius: 999px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+.save-link:hover{
+  background-color:#fed5d5;
+  transform: translateY(-3px) scale(1.01);
+}
+
+
+.features-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem 1rem;
+  background: #f5f7fa;
+}
+
+.feature-column {
+  flex: 1;
+  min-width: 280px;
+  max-width: 450px;
+}
+
+.feature-column h2 {
+  font-size: 1.5rem;
+  color: #1e293b;
+  font-weight: bold;
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.feature-card {
+  display: flex;
+  gap: 1rem;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  align-items: flex-start;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+.feature-card:hover{
+  background-color:#e7e9ec;
+  transform: translateY(-5px) scale(1.01);
+}
+.icon {
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: white;
+  flex-shrink: 0;
+}
+
+.purple {
+  background: #7c3aed;
+}
+
+.blue {
+  background: #2563eb;
+}
+
+.feature-card small {
+  font-size: 0.85rem;
+  color: #374151;
+}
+
+.tech-section {
+  background-color: #ffffff;
+  padding: 2rem 1rem;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 900px;
+  margin: 2rem auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.tech-section h2 {
+  font-size: 1.5rem;
+  color: #1d4ed8;
+  margin-bottom: 1rem;
+}
+
+.tech-section h3 {
+  font-size: 1.2rem;
+  margin: 1rem 0 0.5rem;
+  color: #334155;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+.tech-tags span:hover {
+  background-color: #9f67ff; /* lighter purple */
+  cursor: pointer;
+}
+
+
+.tech-tags span {
+  background-color: #6366f1;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.strengths {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.strengths div {
+  flex: 1;
+  min-width: 200px;
+}
+
+.strengths h4 {
+  font-weight: 700;
+  color: #4f46e5;
+  margin-bottom: 0.3rem;
+  font-size: 1.1rem;
+}
+
+.strengths p {
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+
+  </style>
+</head>
+<body>
+  <h1>Latest Opportunities</h1>
+  <div class="grid">
+  <div class="job-card">
+    <span class="badge">Internship</span>
+    <span class="verified">✔ Verified</span>
+    <div class="title">Frontend Developer Intern</div>
+    <div class="company">TechStart Inc.</div>
+    <div class="details">🕒 3 months • Remote</div>
+    <div class="salary">💰 $1,500/month</div>
+    <div class="tags">
+      <span class="tag">React</span>
+      <span class="tag">TypeScript</span>
+      <span class="tag">CSS</span>
+    </div>
+    <div class="footer">
+      <span>23 applicants</span>
+      <span>Posted 2 days ago</span>
+    </div>
+    <a href="#" class="apply-btn">Apply Now</a>
+    <div class="save-link">Save Opportunity</div>
+  </div>
+
+  <div class="job-card">
+    <span class="badge">Research</span>
+    <span class="verified">✔ Verified</span>
+    <div class="title">Data Science Research Assistant</div>
+    <div class="company">University Lab</div>
+    <div class="details">🕒 6 months • On-campus</div>
+    <div class="salary">💰 $2,000/month</div>
+    <div class="tags">
+      <span class="tag">Python</span>
+      <span class="tag">Machine Learning</span>
+      <span class="tag">Statistics</span>
+    </div>
+    <div class="footer">
+      <span>45 applicants</span>
+      <span>Posted 1 week ago</span>
+    </div>
+    <a href="#" class="apply-btn">Apply Now</a>
+    <div class="save-link">Save Opportunity</div>
+  </div>
+
+  <div class="job-card">
+    <span class="badge">Internship</span>
+    <span class="verified">✔ Verified</span>
+    <div class="title">Mobile App Developer</div>
+    <div class="company">StartupX</div>
+    <div class="details">🕒 4 months • Hybrid</div>
+    <div class="salary">💰 $1,800/month</div>
+    <div class="tags">
+      <span class="tag">React Native</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">Firebase</span>
+    </div>
+    <div class="footer">
+      <span>31 applicants</span>
+      <span>Posted 3 days ago</span>
+    </div>
+    <a href="#" class="apply-btn">Apply Now</a>
+    <div class="save-link">Save Opportunity</div>
+  </div>
+</div>
+<div class="features-container">
+  <div class="feature-column">
+    <h2><span>🧑‍🎓</span> For Students</h2>
+    <div class="feature-card">
+      <div class="icon purple">👤</div>
+      <div>
+        <strong>Verified Profiles</strong><br />
+        <small>College ID verification ensures authentic student profiles</small>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="icon purple">📁</div>
+      <div>
+        <strong>Digital Portfolio</strong><br />
+        <small>Showcase projects, skills, and achievements in one place</small>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="icon purple">🧠</div>
+      <div>
+        <strong>Smart Filtering</strong><br />
+        <small>Find opportunities by duration, domain, stipend, and more</small>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="icon purple">💬</div>
+      <div>
+        <strong>Direct Chat</strong><br />
+        <small>Communicate directly with recruiters through secure messaging</small>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="icon purple">📅</div>
+      <div>
+        <strong>Interview Scheduler</strong><br />
+        <small>Book and manage interview slots with built-in reminders</small>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="icon purple">📌</div>
+      <div>
+        <strong>Application Tracker</strong><br />
+        <small>Track application status and get real-time updates</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="feature-column">
+    <h2><span>🏢</span> For Recruiters</h2>
+    <div class="feature-card">
+      <div class="icon blue">✅</div>
+      <div>
+        <strong>Verified Posting</strong><br />
+        <small>Post opportunities with company verification and branding</small>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="icon blue">🧪</div>
+      <div>
+        <strong>Candidate Filtering</strong><br />
+        <small>Filter by skills, CGPA, year, and project experience</small>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="icon blue">📂</div>
+      <div>
+        <strong>Portfolio Access</strong><br />
+        <small>View complete student portfolios and download resumes</small>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="icon blue">💬</div>
+      <div>
+        <strong>Recruitment Chat</strong><br />
+        <small>Streamlined communication with shortlisted candidates</small>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="icon blue">📆</div>
+      <div>
+        <strong>Interview Management</strong><br />
+        <small>Schedule interviews and send automated reminders</small>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="icon blue">⭐</div>
+      <div>
+        <strong>Review System</strong><br />
+        <small>Rate candidates and maintain recruitment history</small>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <section class="tech-section">
+  <h2>🛠 Built for Scale & Success</h2>
+
+  <h3>Tech Stack</h3>
+  <div class="tech-tags">
+    <span>React Native</span>
+    <span>Node.js</span>
+    <span>MongoDB</span>
+    <span>JWT Auth</span>
+    <span>Socket.IO</span>
+    <span>Firebase</span>
+    <span>Express</span>
+  </div>
+
+  <h3>Key Strengths</h3>
+  <div class="strengths">
+    <div>
+      <h4>Full Stack</h4>
+      <p>Complete end-to-end solution</p>
+    </div>
+    <div>
+      <h4>Scalable</h4>
+      <p>Built for university-wide deployment</p>
+    </div>
+    <div>
+      <h4>Secure</h4>
+      <p>College email verification & JWT auth</p>
+    </div>
+  </div>
+</section>
+</html>

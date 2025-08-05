@@ -1,0 +1,197 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif; /* Use your preferred font */
+    overflow: hidden; /* Hide scrollbars if content is within viewport */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure body takes full viewport height */
+    position: relative;
+
+}
+#myVideo {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centers the video */
+    object-fit: cover; /* Ensures the video covers the entire area without distortion */
+}
+
+/* Optional: Add an overlay to make the login box more readable */
+.video-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Dark semi-transparent overlay */
+    z-index: 0;
+}
+
+.login-container {
+    position: relative; /* To be above the video */
+    z-index: 1; /* Ensures login box is on top of the video and overlay */
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Take full width for responsiveness */
+    height: 100%; /* Take full height for responsiveness */
+}
+
+.login-box {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px; /* Limit max width for larger screens */
+    text-align: center;
+}
+
+/* Existing styles for your login page elements from the image */
+.tabs {
+    display: flex;
+    margin-bottom: 25px;
+    background-color: #f0f0f0; /* Light background for tabs */
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 12px 0;
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 8px; /* For rounded corners when active */
+}
+
+.tab-button.active {
+    background: linear-gradient(to right, #6A5ACD, #3b43de); /* Purple gradient */
+    color: #ffffff;
+}
+
+h1 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: bold;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: calc(100% - 20px); /* Adjust for padding */
+    padding: 12px 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    border-color: #8A2BE2;
+    box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.5);
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    justify-content: flex-start; /* Align checkbox to the left */
+}
+
+.remember-me input[type="checkbox"] {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.sign-in-button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(to right, #6A5ACD, #622be2);
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.sign-in-button:hover {
+    background: linear-gradient(to right, #5A4AD0, #4e1bd0);
+}
+
+.signup-link {
+    margin-top: 25px;
+    font-size: 15px;
+    color: #777;
+}
+
+.signup-link a {
+    color: #8A2BE2;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .login-box {
+        margin: 20px; /* Add some margin on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .login-box {
+        padding: 20px;
+    }
+    h1 {
+        font-size: 24px;
+    }
+    p {
+        font-size: 14px;
+    }
+    .tab-button {
+        font-size: 14px;
+        padding: 10px 0;
+    }
+    input[type="email"],
+    input[type="password"] {
+        padding: 10px;
+        font-size: 14px;
+    }
+    .sign-in-button {
+        padding: 12px;
+        font-size:16px;
+    }
+}

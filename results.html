@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackathon Results - UniLink</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        /* Custom CSS variables for consistency with Hackathons.css */
+        :root {
+            --primary: hsl(262, 83%, 58%);
+            --primary-glow: hsl(262, 83%, 68%);
+            --background: hsl(0, 0%, 100%);
+            --foreground: hsl(240, 10%, 3.9%);
+            --card: hsl(0, 0%, 100%);
+            --card-foreground: hsl(240, 10%, 3.9%);
+            --muted: hsl(240, 4.8%, 95.9%);
+            --muted-foreground: hsl(240, 3.8%, 46.1%);
+            --border: hsl(240, 5.9%, 90%);
+            --accent: hsl(240, 4.8%, 95.9%);
+            --accent-foreground: hsl(240, 5.9%, 10%);
+            --red: hsl(0, 84%, 60%);
+            --red-foreground: hsl(0, 0%, 98%);
+            --yellow: hsl(47, 96%, 53%);
+            --green: hsl(142, 76%, 36%);
+            --blue: hsl(221, 83%, 53%);
+            --orange: hsl(25, 95%, 53%);
+            --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-glow));
+            --unilink-logo-color: hsl(262, 83%, 40%);
+            --subtitle-color: rgba(31, 29, 29, 0.811);
+            --event-platform-color: rgb(29, 138, 85);
+            --event-description-color: rgba(36, 32, 32, 0.694);
+            --stat-detail-color: rgba(64, 67, 72, 0.833);
+            --live-now-color: rgba(255, 0, 0, 0.806);
+            --progress-bar-bg: rgba(211, 207, 207, 0.826);
+            --progress-fill-color: #327df8;
+            --countdown-item-bg: rgba(32, 143, 233, 0.354);
+            --countdown-number-color: #23272dda;
+            --countdown-label-color: darkgreen;
+            --winner-rank-color: rgba(59, 59, 59, 0.952);
+            --rank-1-bg: #FFD700; /* Gold */
+            --rank-2-bg: #C0C0C0; /* Silver */
+            --rank-3-bg: #CD7F32; /* Bronze */
+            --winner-avatar-bg: rgba(157, 159, 159, 0.765);
+            --winner-avatar-text: rgba(0, 0, 0, 0.831);
+            --winner-university-color: rgb(110, 110, 110);
+            --winner-prize-bg: rgba(89, 116, 253, 0.916);
+            --btn-primary-bg: #138e5bb5;
+            --btn-primary-hover-bg: #4b78d8;
+        }
+
+        /* Dark mode variables */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --background: hsl(240, 81%, 73%);
+                --foreground: hsl(218, 82%, 65%);
+                --card: hsla(227, 29%, 88%, 0.568);
+                --card-foreground: hsl(0, 4%, 86%);
+                --muted: hsl(240, 3.7%, 15.9%);
+                --muted-foreground: hsl(240, 5%, 64.9%);
+                --border: hsla(0, 0%, 93%, 0.961);
+                --accent: hsl(240, 3.7%, 15.9%);
+                --accent-foreground: hsl(0, 0%, 98%);
+                --red: hsl(0, 84%, 70%);
+                --yellow: hsl(47, 96%, 70%);
+                --green: hsl(142, 76%, 60%);
+                --blue: hsl(221, 83%, 70%);
+                --orange: hsl(25, 95%, 70%);
+                --unilink-logo-color: hsl(262, 83%, 70%);
+                --subtitle-color: rgba(255, 255, 255, 0.7);
+                --event-platform-color: rgb(100, 200, 150);
+                --event-description-color: rgba(255, 255, 255, 0.8);
+                --stat-detail-color: rgba(200, 200, 200, 0.833);
+                --live-now-color: rgba(255, 100, 100, 0.9);
+                --progress-bar-bg: rgba(100, 100, 100, 0.5);
+                --progress-fill-color: #6a9cfd;
+                --countdown-item-bg: rgba(50, 160, 250, 0.354);
+                --countdown-number-color: #e0e7ff;
+                --countdown-label-color: lightgreen;
+                --winner-rank-color: rgba(200, 200, 200, 0.952);
+                --rank-1-bg: #FFD700; /* Gold */
+                --rank-2-bg: #C0C0C0; /* Silver */
+                --rank-3-bg: #CD7F32; /* Bronze */
+                --winner-avatar-bg: rgba(100, 100, 100, 0.765);
+                --winner-avatar-text: rgba(255, 255, 255, 0.9);
+                --winner-university-color: rgb(180, 180, 180);
+                --winner-prize-bg: rgba(120, 150, 255, 0.916);
+                --btn-primary-bg: #20b2aa;
+                --btn-primary-hover-bg: #008080;
+            }
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--foreground);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            background-color: var(--card);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 0.75rem 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo img {
+            height: 40px;
+            width: 40px;
+            object-fit: contain;
+        }
+
+        .logoname {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--unilink-logo-color);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--foreground);
+            font-weight: 500;
+            padding: 0.4rem 0.75rem;
+            border-radius: 6px;
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            background-color: var(--muted);
+        }
+
+        .auth-buttons a {
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            background-color: var(--blue);
+            color: white;
+            transition: background 0.3s ease;
+        }
+
+        .auth-buttons a:hover {
+            background-color: hsl(221, 83%, 40%);
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-toggle {
+            cursor: pointer;
+            padding: 10px;
+            display: inline-block;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: var(--card);
+            min-width: 180px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            flex-direction: column;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .dropdown-menu a {
+            padding: 12px 16px;
+            display: block;
+            text-decoration: none;
+            color: var(--foreground);
+        }
+
+        .dropdown-menu a:hover {
+            background-color: var(--muted);
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            flex-grow: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .title {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(to right, var(--blue), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--subtitle-color);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--foreground);
+        }
+
+        .icon {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        .trophy-icon {
+            color: var(--yellow);
+        }
+
+        .small-icon {
+            width: 1rem;
+            height: 1rem;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .event-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--foreground);
+            margin-bottom: 0.5rem;
+        }
+
+        .event-date {
+            font-size: 0.9rem;
+            color: var(--muted-foreground);
+            margin-bottom: 1rem;
+        }
+
+        .winners-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            color: var(--foreground);
+        }
+
+        .winner-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .winner-rank {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.875rem;
+            color: white;
+        }
+
+        .rank-1 { background-color: var(--rank-1-bg); }
+        .rank-2 { background-color: var(--rank-2-bg); }
+        .rank-3 { background-color: var(--rank-3-bg); }
+
+        .winner-avatar {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background-color: var(--winner-avatar-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--winner-avatar-text);
+        }
+
+        .winner-info {
+            flex-grow: 1;
+        }
+
+        .winner-name {
+            font-weight: 500;
+            color: var(--foreground);
+        }
+
+        .winner-university {
+            font-size: 0.875rem;
+            color: var(--winner-university-color);
+        }
+
+        .winner-prize {
+            background-color: var(--winner-prize-bg);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background-color: var(--btn-primary-bg);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--btn-primary-hover-bg);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--foreground);
+            border: 1px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--muted);
+            color: var(--foreground);
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.2rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+            .navbar-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .nav-right {
+                width: 100%;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+                margin-top: 1rem;
+            }
+            .nav-links, .auth-buttons {
+                width: 100%;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            .nav-links a, .auth-buttons a {
+                width: 100%;
+                text-align: left;
+            }
+            .nav-toggle {
+                display: block;
+                margin-left: auto;
+            }
+            .navbar-container .nav-right:not(.active) {
+                display: none;
+            }
+            .navbar-container .nav-right.active {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans antialiased">
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="nav-left">
+                <div class="logo">
+                    <a href="home.html"><img src="https://placehold.co/40x40/E0E7FF/4F46E5?text=UL" alt="UniLink Logo" onerror="this.onerror=null;this.src='https://placehold.co/40x40/E0E7FF/4F46E5?text=UL';" /></a>
+                    <span class="logoname">UniLink</span>
+                </div>
+            </div>
+            <button class="nav-toggle hidden md:block" id="nav-toggle">☰</button>
+            <div class="nav-right flex-grow justify-end md:flex" id="nav-section">
+                <nav class="nav-links flex gap-8 items-center">
+                    <a href="Dashboard.html">Dashboard</a>
+                    <a href="Ideahub.html">IdeaHub</a>
+                    <div class="dropdown">
+                        <a href="Campusnetwork.html" class="dropdown-toggle">CampusConnect ▾</a>
+                        <div class="dropdown-menu">
+                            <a href="Campusnetwork.html">Campus Network</a>
+                            <a href="ishipresume.html">Resume Building</a>
+                        </div>
+                    </div>
+                    <a href="Hackathons.html">Hackathons</a>
+                    <a href="CampusX.html">CampusX</a>
+                </nav>
+                <div class="auth-buttons flex gap-4 items-center ml-8">
+                    <a href="signup.html" class="signup">Login</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Past Event Results</h1>
+            <p class="subtitle">Detailed results and winner information from our previous competitions.</p>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title">
+                <i data-lucide="trophy" class="icon trophy-icon"></i>
+                Frontend Masters Challenge Results
+            </h2>
+            
+            <div class="results-grid">
+                <div class="card">
+                    <h3 class="event-title">Overall Winners</h3>
+                    <p class="event-date">Event Date: Jan 20, 2024</p>
+                    <div class="winners-list">
+                        <div class="winner-item">
+                            <div class="winner-rank rank-1">1</div>
+                            <div class="winner-avatar">A</div>
+                            <div class="winner-info">
+                                <div class="winner-name">Alex Chen</div>
+                                <div class="winner-university">MIT</div>
+                            </div>
+                            <span class="winner-prize">$5,000</span>
+                        </div>
+                        <div class="winner-item">
+                            <div class="winner-rank rank-2">2</div>
+                            <div class="winner-avatar">S</div>
+                            <div class="winner-info">
+                                <div class="winner-name">Sarah Kim</div>
+                                <div class="winner-university">Stanford</div>
+                            </div>
+                            <span class="winner-prize">$3,000</span>
+                        </div>
+                        <div class="winner-item">
+                            <div class="winner-rank rank-3">3</div>
+                            <div class="winner-avatar">D</div>
+                            <div class="winner-info">
+                                <div class="winner-name">David Wilson</div>
+                                <div class="winner-university">Berkeley</div>
+                            </div>
+                            <span class="winner-prize">$2,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="event-title">Top Performers by Category</h3>
+                    <p class="event-date">Frontend Masters Challenge</p>
+                    <div class="winners-list">
+                        <div class="winner-item">
+                            <div class="winner-rank">UI</div>
+                            <div class="winner-avatar">J</div>
+                            <div class="winner-info">
+                                <div class="winner-name">Jessica Lee</div>
+                                <div class="winner-university">CMU</div>
+                            </div>
+                            <span class="winner-prize">Best UI</span>
+                        </div>
+                        <div class="winner-item">
+                            <div class="winner-rank">UX</div>
+                            <div class="winner-avatar">K</div>
+                            <div class="winner-info">
+                                <div class="winner-name">Kevin Brown</div>
+                                <div class="winner-university">Georgia Tech</div>
+                            </div>
+                            <span class="winner-prize">Best UX</span>
+                        </div>
+                        <div class="winner-item">
+                            <div class="winner-rank">Perf</div>
+                            <div class="winner-avatar">R</div>
+                            <div class="winner-info">
+                                <div class="winner-name">Rachel Green</div>
+                                <div class="winner-university">UCLA</div>
+                            </div>
+                            <span class="winner-prize">Best Perf</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">
+                <i data-lucide="trophy" class="icon trophy-icon"></i>
+                Algorithm Sprint Results
+            </h2>
+            
+            <div class="results-grid">
+                <div class="card">
+                    <h3 class="event-title">Overall Winners</h3>
+                    <p class="event-date">Event Date: Jan 15, 2024</p>
+                    <div class="winners-list">
+                        <div class="winner-item">
+                            <div class="winner-rank rank-1">1</div>
+                            <div class="winner-avatar">E</div>
+                            <div class="winner-info">
+                                <div class="winner-name">Emma Rodriguez</div>
+                                <div class="winner-university">Caltech</div>
+                            </div>
+                            <span class="winner-prize">$4,000</span>
+                        </div>
+                        <div class="winner-item">
+                            <div class="winner-rank rank-2">2</div>
+                            <div class="winner-avatar">M</div>
+                            <div class="winner-info">
+                                <div class="winner-name">Michael Zhang</div>
+                                <div class="winner-university">CMU</div>
+                            </div>
+                            <span class="winner-prize">$2,500</span>
+                        </div>
+                        <div class="winner-item">
+                            <div class="winner-rank rank-3">3</div>
+                            <div class="winner-avatar">L</div>
+                            <div class="winner-info">
+                                <div class="winner-name">Lisa Patel</div>
+                                <div class="winner-university">Georgia Tech</div>
+                            </div>
+                            <span class="winner-prize">$1,500</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="event-title">Problem Solvers</h3>
+                    <p class="event-date">Algorithm Sprint</p>
+                    <div class="winners-list">
+                        <div class="winner-item">
+                            <div class="winner-rank">P1</div>
+                            <div class="winner-avatar">C</div>
+                            <div class="winner-info">
+                                <div class="winner-name">Chris Evans</div>
+                                <div class="winner-university">Harvard</div>
+                            </div>
+                            <span class="winner-prize">Fastest Solve</span>
+                        </div>
+                        <div class="winner-item">
+                            <div class="winner-rank">P2</div>
+                            <div class="winner-avatar">N</div>
+                            <div class="winner-info">
+                                <div class="winner-name">Nina Singh</div>
+                                <div class="winner-university">Oxford</div>
+                            </div>
+                            <span class="winner-prize">Most Elegant</span>
+                        </div>
+                        <div class="winner-item">
+                            <div class="winner-rank">P3</div>
+                            <div class="winner-avatar">A</div>
+                            <div class="winner-info">
+                                <div class="winner-name">Adam Smith</div>
+                                <div class="winner-university">Cambridge</div>
+                            </div>
+                            <span class="winner-prize">Top Accuracy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+
+            // Navbar toggle logic (copied from Hackathons.js for consistency)
+            const navToggle = document.getElementById('nav-toggle');
+            const navSection = document.getElementById('nav-section');
+
+            if (navToggle && navSection) {
+                navToggle.addEventListener('click', () => {
+                    navSection.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

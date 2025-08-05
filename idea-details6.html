@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Faculty Presence Tracker</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8fafc;
+      color: #1a202c;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    body.dark-theme {
+      background-color: #000;
+      color: #fff;
+    }
+    body.dark-theme .title {
+      color: #0000ff;
+    }
+    body.dark-theme .subtitle strong,
+    body.dark-theme .features,
+    body.dark-theme .benefits,
+    body.dark-theme .security,
+    body.dark-theme .tools {
+      color: #fff;
+    }
+    body.dark-theme h3 {
+      color: #0000ff;
+    }
+    body.dark-theme .call-to-action {
+      background-color: #333;
+      color: #fff;
+    }
+    .bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index:-1;
+    }
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+    .title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #4c51bf;
+    }
+    .subtitle {
+      font-size: 1.2rem;
+      color: #444;
+      margin-bottom: 40px;
+    }
+    body.dark-theme .subtitle {
+      color: #ccc;
+    }
+    .features, .benefits, .security, .tools {
+      margin-bottom: 40px;
+    }
+    h3 {
+      font-size: 1.6rem;
+      color: #4c51bf;
+      margin-bottom: 10px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li::before {
+      content: "📘";
+      margin-right: 10px;
+    }
+    .call-to-action {
+      background-color: #4c51bf;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 8px;
+    }
+    .call-to-action h4 {
+      margin: 0 0 10px;
+    }
+    .call-to-action a {
+      color: #fff;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <video autoplay muted loop class="bg-video">
+  <source src="./smartfaculty.mp4" type="video/mp4">
+</video>
+  <section class="section">
+    <h1 class="title">📘 Smart Faculty Presence Tracker</h1>
+    <p class="subtitle"><strong>By YakankshaAdvanced</strong><br/>AI-powered tool for tracking faculty attendance and engagement in real-time</p>
+
+    <div class="features">
+      <h3>💡 Key Features</h3>
+      <ul>
+        <li>Real-Time Attendance Monitoring</li>
+        <li>Engagement Analytics and Participation Tracking</li>
+        <li>Automated Attendance and Compliance Reports</li>
+        <li>Mobile and Web App Access</li>
+        <li>Integration with LMS and HR Systems</li>
+        <li>Smart Alerts & Notifications</li>
+      </ul>
+    </div>
+
+    <div class="benefits">
+      <h3>✅ Benefits</h3>
+      <ul>
+        <li>Enhance transparency and accountability</li>
+        <li>Eliminate manual tracking errors</li>
+        <li>Enable data-informed performance reviews</li>
+        <li>Ensure policy compliance and staff oversight</li>
+        <li>Streamline operations in educational institutions</li>
+      </ul>
+    </div>
+
+    <div class="security">
+      <h3>🔐 Secure & Compliant</h3>
+      <ul>
+        <li>Encrypted and secure data transmission</li>
+        <li>Role-based access and permissions</li>
+        <li>Compliant with academic privacy standards</li>
+      </ul>
+    </div>
+
+    <div class="tools">
+      <h3>🛠 Tools & Technologies Used</h3>
+      <ul>
+        <li>Artificial Intelligence & Machine Learning</li>
+        <li>Computer Vision for facial/biometric recognition</li>
+        <li>IoT devices for sensor integration</li>
+        <li>Web & Mobile platforms (responsive apps)</li>
+        <li>Cloud Infrastructure (AWS, Azure, or GCP)</li>
+        <li>Secure encryption protocols</li>
+        <li>API integration with LMS and HR tools</li>
+      </ul>
+    </div>
+
+    <div class="call-to-action">
+      <h4>Track faculty presence the smart way.</h4>
+      <p>Digitize your institution’s faculty tracking with real-time, AI-powered insights.</p>
+      <p><a href="#">Request a Demo</a></p>
+    </div>
+  </section>
+</body>
+</html>

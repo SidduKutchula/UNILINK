@@ -2,7 +2,6 @@
 
 > 🌟 *Your All-in-One Digital Campus Companion*  
 > Developed with ❤️ by Team **SHIP-MATES** during the **ISHIP Internship Program (6-Day Innovation Sprint)**  
-
 ---
 
 ## 🌐 **Live Demo**
